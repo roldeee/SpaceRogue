@@ -117,7 +117,9 @@ public class PlayerController : MonoBehaviour
 
     void Rotation()
     {
-        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * 4f, 0));
+        if (Time.timeScale > 0f) {
+            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * 4f, 0));
+        }
     }
 
     void TakeDamage(int damage)

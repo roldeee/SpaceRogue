@@ -22,9 +22,11 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Rotate();
-        transform.position = Vector3.Lerp(transform.position, (player.transform.position + finalOffset), .5f);
-        transform.LookAt(player.transform.position);
+        if (Time.timeScale > 0f) {
+            Rotate();
+            transform.position = Vector3.Lerp(transform.position, (player.transform.position + finalOffset), .5f);
+            transform.LookAt(player.transform.position);
+        }
     }
 
     void Rotate()
