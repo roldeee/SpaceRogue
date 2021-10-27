@@ -10,11 +10,14 @@ public class EnemyAI : MonoBehaviour
     public GameObject player;
     public UnityEngine.AI.NavMeshAgent agent;
     public float chaseRadius = 5f;
+    public float attackRadius = 2.5f;
 
     private enum AIState
     {
         Roaming,
-        Attacking
+        Attacking,
+        Chasing,
+        Idle
     };
     private int epsilon = 1;
     private int currWaypoint = -1;
@@ -23,31 +26,70 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        aiState = AIState.Roaming;
-        setNextWaypoint();
+        animator = GetComponent<Animator>();
+        if (waypoints.Length > 0) {
+            aiState = AIState.Roaming;
+            setNextWaypoint();
+        } else {
+            aiState = AIState.Idle;
+            agent.isStopped = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        float distanceToPlayer = Vector3.Distance(transform.position,
+            player.transform.position);
+        animator.SetBool("Attacking", false);
+        animator.SetFloat("Speed", agent.velocity.magnitude);
         switch (aiState)
         {
             case AIState.Roaming:
                 // if the agent is near the player
-                float distanceToPlayer = Vector3.Distance(transform.position,
-                    player.transform.position);
                 if (distanceToPlayer < chaseRadius)
                 {
-                    aiState = AIState.Attacking;
+                    aiState = AIState.Chasing;
                 }
                 else if (!agent.pathPending && agent.remainingDistance < epsilon)
                 {
                     setNextWaypoint();
                 }
-                break;
+            break;
+            case AIState.Chasing:
+                if (distanceToPlayer < attackRadius) 
+                {
+                    aiState = AIState.Attacking;
+                    agent.isStopped = true;
+                }
+                else 
+                {
+                    agent.SetDestination(getPredictedLocation());
+                }
+            break;
             case AIState.Attacking:
-                agent.SetDestination(getPredictedLocation());
-                break;
+                if (distanceToPlayer >= attackRadius) 
+                {
+                    aiState = AIState.Chasing;
+                    agent.isStopped = false;
+                }
+                else 
+                {
+                    animator.SetBool("Attacking", true);
+                    // animate
+                }
+            break;
+            case AIState.Idle:
+                if (distanceToPlayer < chaseRadius)
+                {
+                    aiState = AIState.Chasing;
+                }
+                else if (distanceToPlayer < attackRadius) 
+                {
+                    aiState = AIState.Attacking;
+                    agent.isStopped = true;
+                }
+            break;
         }
     }
 

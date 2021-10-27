@@ -9,10 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68406362538593476}
-  - component: {fileID: 5399027565353347081}
-  - component: {fileID: 2867997443372298319}
-  - component: {fileID: 1219751730942645938}
-  - component: {fileID: 4861758553438882864}
   m_Layer: 0
   m_Name: Basic Enemy
   m_TagString: Enemy
@@ -35,13 +31,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &5399027565353347081
+--- !u!136 &7921003917400352539
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2682904578454731712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!136 &8732650150133680995
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2682904578454731712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!195 &5777270380019600308
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836165260635213356}
+  m_GameObject: {fileID: 2682904578454731712}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
@@ -57,51 +81,24 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2867997443372298319
+--- !u!114 &8713366846103480404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836165260635213356}
+  m_GameObject: {fileID: 2682904578454731712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d13fc313259264999b297a8fe6f03743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 2682904578462140446}
   waypoints: []
   player: {fileID: 0}
-  agent: {fileID: 5399027565353347081}
+  agent: {fileID: 5777270380019600308}
   chaseRadius: 5
---- !u!136 &1219751730942645938
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836165260635213356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
---- !u!136 &4861758553438882864
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836165260635213356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
+  attackRadius: 2.5
 --- !u!1001 &2682904578454830462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,10 +154,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 525cd4a9dbccc9143b9555371a791154, type: 2}
+    - target: {fileID: 9500000, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
+--- !u!1 &2682904578454731712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100030, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
+  m_PrefabInstance: {fileID: 2682904578454830462}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2682904578455218144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400030, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
+  m_PrefabInstance: {fileID: 2682904578454830462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2682904578462140446 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
   m_PrefabInstance: {fileID: 2682904578454830462}
   m_PrefabAsset: {fileID: 0}
