@@ -22,15 +22,26 @@ public class EnemyAI : MonoBehaviour
     private int epsilon = 1;
     private int currWaypoint = -1;
     private AIState aiState;
-    private Vector3[] waypointpositions;
+    public Vector3[] waypointPositions;
     // Start is called before the first frame update
     void Start()
     {
+        if (waypoints.Length > 0)
+        {
+            waypointPositions = new Vector3[waypoints.Length];
+            for (int i = 0; i < waypoints.Length; i++)
+            {
+                waypointPositions[i] = waypoints[i].transform.position;
+            }
+        }
         animator = GetComponent<Animator>();
-        if (waypoints.Length > 0) {
+        if (waypointPositions.Length > 0)
+        {
             aiState = AIState.Roaming;
             setNextWaypoint();
-        } else {
+        }
+        else
+        {
             aiState = AIState.Idle;
             agent.isStopped = false;
         }
@@ -95,10 +106,10 @@ public class EnemyAI : MonoBehaviour
 
     private void setNextWaypoint()
     {
-        if (waypoints.Length != 0)
+        if (waypointPositions.Length != 0)
         {
-            currWaypoint = (currWaypoint + 1) % waypoints.Length;
-            agent.SetDestination(waypoints[currWaypoint].transform.position);
+            currWaypoint = (currWaypoint + 1) % waypointPositions.Length;
+            agent.SetDestination(waypointPositions[currWaypoint]);
         }
     }
 
