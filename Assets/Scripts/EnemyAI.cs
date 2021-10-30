@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
@@ -11,6 +13,8 @@ public class EnemyAI : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public float chaseRadius = 5f;
     public float attackRadius = 2.5f;
+    RoomClearChecker roomClearChecker;
+    EventSystem eventSystem;
 
     private enum AIState
     {
@@ -26,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
         if (waypoints.Length > 0)
         {
             waypointPositions = new Vector3[waypoints.Length];
@@ -120,4 +125,25 @@ public class EnemyAI : MonoBehaviour
         Vector3 futureTarget = player.transform.position;// + lookAheadT * player.GetComponent<VelocityReporter>().velocity;
         return futureTarget;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var projectile = collision.collider.GetComponent<Projectile>();
+        if (projectile != null)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        print("DIE START");
+        GetComponent<Collider>().enabled = false;
+        agent.enabled = false;
+        roomClearChecker.RemoveEnemy();
+        Destroy(transform.root.gameObject); // delete the parent object.
+        print("DIE END");
+        //animator.SetTrigger("isDead"); # TODO: Enable when death animations are setup.
+    }
 }
+

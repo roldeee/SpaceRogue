@@ -7,6 +7,8 @@ TagManager:
   - Door
   - Enemy
   - Food
+  - Room
+  - NextReward
   layers:
   - Default
   - TransparentFX

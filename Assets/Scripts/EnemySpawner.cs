@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -11,8 +12,13 @@ public class EnemySpawner : MonoBehaviour
     public int numberOfEnemies = 1;
     public int numberOfWaypoints = 2;
     public float spawnRadius = 15f;
+
+    private RoomClearChecker roomClearChecker;
+
     void Start()
     {
+        roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
+        roomClearChecker.setNumEnemies(numberOfEnemies);
         for (int i = 0; i < numberOfEnemies; i++)
         {
             GameObject newEnemy = Instantiate(enemyPrefab, GetRandomLocationOnNavMesh(spawnRadius), Quaternion.identity);
