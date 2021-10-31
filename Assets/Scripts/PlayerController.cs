@@ -10,15 +10,20 @@ public class PlayerController : MonoBehaviour
 {
     public static string CLONE = "(Clone)";
     public float speed = 5f;
-    public CharacterController characterController;
     public int health = 100;
+    public float dashSpeed = 100f;
+    public float dashDelay = 0.1f;
+    public float velocity = 1f;
+    public float dashCooldown = 0.5f;
 
+    private float dashCooldownTimer = 0f;
     private Vector3 movement;
     private string currentScene;
     private RoomClearChecker roomClearChecker;
     private EventSystem eventSystem;
     private GameObject nextReward;
     private PlayerDataManager playerDataManager;
+    public CharacterController characterController;
 
     private Animator animator;
     private int moveXParameterId;
@@ -27,6 +32,15 @@ public class PlayerController : MonoBehaviour
     private float animationSmoothTime = 0.1f;
     private Vector2 animationBlend;
     private Vector2 animationVelocity;
+
+    [SerializeField] ParticleSystem forwardDashParticleSystem;
+    [SerializeField] ParticleSystem forwardRightDiagonalDashParticleSystem;
+    [SerializeField] ParticleSystem forwardLeftDiagonalDashParticleSystem;
+    [SerializeField] ParticleSystem backwardDashParticleSystem;
+    [SerializeField] ParticleSystem backwardRightDashParticleSystem;
+    [SerializeField] ParticleSystem backwardLeftDashParticleSystem;
+    [SerializeField] ParticleSystem rightDashParticleSystem;
+    [SerializeField] ParticleSystem leftDashParticleSystem;
 
     [SerializeField] private bool canOpenDoor = false;
     [SerializeField] private bool inInteractRange = false;
@@ -61,15 +75,27 @@ public class PlayerController : MonoBehaviour
     }
                                                                     
     private void Update()
-    {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+    {   
+        if (dashCooldownTimer > 0)
+        {
+            dashCooldownTimer -= Time.deltaTime;
+        }
+        movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         movement *= speed;
         movement = transform.rotation * movement;
 
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         animationBlend = Vector2.SmoothDamp(animationBlend, input, ref animationVelocity, animationSmoothTime);
 
-        characterController.Move(movement * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0)
+        { 
+            StartCoroutine(Dashing(movement));
+            dashCooldownTimer = dashCooldown;
+        } else
+        {
+            Debug.Log("MOVE");
+            characterController.Move(movement * Time.deltaTime);
+        }
 
         animator.SetFloat(moveXParameterId, animationBlend.x);
         animator.SetFloat(moveZParameterId, animationBlend.y);
@@ -96,6 +122,23 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(nextScene);
         }
         Rotation();
+    }
+
+
+    IEnumerator Dashing(Vector3 movement)
+    {
+        animator.SetBool("isDashing", true);
+        float startTime = Time.time;
+        PlayDashParticles();
+        gameObject.layer = 3;
+        Physics.IgnoreLayerCollision(0, 3, true);
+        while (Time.time < startTime + dashDelay)
+        {
+            characterController.Move(movement * dashSpeed * Time.deltaTime);
+            yield return null;
+        }
+        Physics.IgnoreLayerCollision(0, 3, false);
+        animator.SetBool("isDashing", false);
     }
 
     private bool DoorCanOpen()
@@ -174,5 +217,58 @@ public class PlayerController : MonoBehaviour
     {
         str = str.StartsWith(prefix) ? str.Substring(prefix.Length) : str;
         return str.EndsWith(suffix) ? str.Substring(0, str.Length - suffix.Length) : str;
+    }
+
+    void PlayDashParticles()
+    {
+        Vector3 inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        if (inputVector.z > 0 && inputVector.x == 0)
+        {
+            // Forward
+            forwardDashParticleSystem.Play();
+            return;
+        }
+        if (inputVector.z > 0 && inputVector.x > 0)
+        {
+            // Forward Right Diagonal
+            forwardRightDiagonalDashParticleSystem.Play();
+            return;
+        }
+        if (inputVector.z > 0 && inputVector.x < 0)
+        {
+            // Forward Left Diagonal
+            forwardLeftDiagonalDashParticleSystem.Play();
+            return;
+        }
+        if (inputVector.z < 0 && inputVector.x == 0)
+        {
+            // Backward
+            backwardDashParticleSystem.Play();
+            return;
+        }
+        if (inputVector.z < 0 && inputVector.x > 0)
+        {
+            // Backward Right Diagonal
+            backwardRightDashParticleSystem.Play();
+            return;
+        }
+        if (inputVector.z < 0 && inputVector.x < 0)
+        {
+            // Backward Left Diagonal
+            backwardLeftDashParticleSystem.Play();
+            return;
+        }
+        if (inputVector.x > 0)
+        {
+            // Right 
+            rightDashParticleSystem.Play();
+            return;
+        }
+        if (inputVector.x < 0)
+        {
+            // Left
+            leftDashParticleSystem.Play();
+            return;
+        }
     }
 }
