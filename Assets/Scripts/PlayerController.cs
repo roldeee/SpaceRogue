@@ -20,6 +20,14 @@ public class PlayerController : MonoBehaviour
     private GameObject nextReward;
     private PlayerDataManager playerDataManager;
 
+    private Animator animator;
+    private int moveXParameterId;
+    private int moveZParameterId;
+    [SerializeField]
+    private float animationSmoothTime = 0.1f;
+    private Vector2 animationBlend;
+    private Vector2 animationVelocity;
+
     [SerializeField] private bool canOpenDoor = false;
     [SerializeField] private bool inInteractRange = false;
 
@@ -36,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         playerDataManager = new PlayerDataManager();
         playerDataManager.Load();
         eventSystem = EventSystem.current;
@@ -44,6 +53,8 @@ public class PlayerController : MonoBehaviour
         movement = Vector3.zero;
         characterController = GetComponent<CharacterController>();
         playerDataManager.Load();
+        moveXParameterId = Animator.StringToHash("MoveX");
+        moveZParameterId = Animator.StringToHash("MoveZ");
 
         count = 0;
         SetCountText();
@@ -54,8 +65,14 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         movement *= speed;
         movement = transform.rotation * movement;
-        
+
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        animationBlend = Vector2.SmoothDamp(animationBlend, input, ref animationVelocity, animationSmoothTime);
+
         characterController.Move(movement * Time.deltaTime);
+
+        animator.SetFloat(moveXParameterId, animationBlend.x);
+        animator.SetFloat(moveZParameterId, animationBlend.y);
 
         // Player selects a reward and opens the door
         if (DoorCanOpen() && Input.GetKeyDown(KeyCode.F))
