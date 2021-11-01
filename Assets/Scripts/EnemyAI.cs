@@ -122,7 +122,7 @@ public class EnemyAI : MonoBehaviour
     {
         float dist = (player.transform.position - transform.position).magnitude;
         float lookAheadT = dist / agent.speed;
-        Vector3 futureTarget = player.transform.position;// + lookAheadT * player.GetComponent<VelocityReporter>().velocity;
+        Vector3 futureTarget = player.transform.position + lookAheadT * player.GetComponent<VelocityReporter>().velocity;
         return futureTarget;
     }
 
@@ -137,12 +137,10 @@ public class EnemyAI : MonoBehaviour
 
     private void Die()
     {
-        print("DIE START");
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
         roomClearChecker.RemoveEnemy();
         Destroy(transform.root.gameObject); // delete the parent object.
-        print("DIE END");
         //animator.SetTrigger("isDead"); # TODO: Enable when death animations are setup.
     }
 }

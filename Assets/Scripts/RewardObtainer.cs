@@ -8,8 +8,7 @@ public class RewardObtainer : MonoBehaviour
 
     private void Start()
     {
-        playerDataManager = new PlayerDataManager();
-        playerDataManager.Load();
+        playerDataManager = PlayerDataManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,9 +16,6 @@ public class RewardObtainer : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             playerDataManager.playerData.currentRewards.Add(RewardsHandler.getRewardEnum(gameObject.name));
-            playerDataManager.Save();
-            Debug.Log("RewardObtainer: Logging data");
-            playerDataManager.LogData();
         }
         Destroy(gameObject);
     }

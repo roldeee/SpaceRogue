@@ -5,7 +5,6 @@ using System;
 
 public class RewardsHandler : MonoBehaviour
 {
-    //private GameObject[] doors;
     public static string REWARDS_PATH = "Rewards/";
     public static string PREVIEW = "Preview";
 
@@ -21,7 +20,7 @@ public class RewardsHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerDataManager = new PlayerDataManager();
+        playerDataManager = PlayerDataManager.Instance;
         possibleRewards = new List<Reward>();
         foreach (Reward r in System.Enum.GetValues(typeof(Reward)))
         {
@@ -31,7 +30,6 @@ public class RewardsHandler : MonoBehaviour
 
     public void showRewards()
     {
-        playerDataManager.Load();
         List<string> rewardsUsed = new List<string>();
         Reward? nextReward = playerDataManager.playerData.nextReward;
         
@@ -40,6 +38,7 @@ public class RewardsHandler : MonoBehaviour
         {
             // Load reward prefab
             GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + getRewardStr(playerDataManager.playerData.nextReward.Value));
+            Debug.Log("Next reward --------------: " + REWARDS_PATH + getRewardStr(playerDataManager.playerData.nextReward.Value));
             Instantiate(reward, currentRewardWaypoint.transform.position, Quaternion.identity);
             rewardsUsed.Add(reward.name);
         }

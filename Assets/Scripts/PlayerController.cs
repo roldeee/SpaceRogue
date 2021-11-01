@@ -10,12 +10,12 @@ public class PlayerController : MonoBehaviour
 {
     public static string CLONE = "(Clone)";
     public float speed = 5f;
-    public int health = 100;
     public float dashSpeed = 100f;
     public float dashDelay = 0.1f;
     public float velocity = 1f;
     public float dashCooldown = 0.5f;
 
+    private int health;
     private float dashCooldownTimer = 0f;
     private Vector3 movement;
     private string currentScene;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private float animationSmoothTime = 0.1f;
     private Vector2 animationBlend;
     private Vector2 animationVelocity;
+    private PlayerHealth playerHealth;
 
     [SerializeField] ParticleSystem forwardDashParticleSystem;
     [SerializeField] ParticleSystem forwardRightDiagonalDashParticleSystem;
@@ -58,15 +59,15 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        playerDataManager = PlayerDataManager.Instance;
+
+        playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponent<Animator>();
-        playerDataManager = new PlayerDataManager();
-        playerDataManager.Load();
         eventSystem = EventSystem.current;
         roomClearChecker = eventSystem.GetComponent<RoomClearChecker>();
         currentScene = SceneManager.GetActiveScene().name;
         movement = Vector3.zero;
         characterController = GetComponent<CharacterController>();
-        playerDataManager.Load();
         moveXParameterId = Animator.StringToHash("MoveX");
         moveZParameterId = Animator.StringToHash("MoveZ");
 
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             dashCooldownTimer -= Time.deltaTime;
         }
-        movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         movement *= speed;
         movement = transform.rotation * movement;
 
@@ -109,12 +110,15 @@ public class PlayerController : MonoBehaviour
                 string nextRewardName = RemovePrefixAndSuffix(nextReward.name, RewardsHandler.PREVIEW, CLONE);
                 Debug.Log("Setting next room reward to " + nextRewardName);
                 playerDataManager.playerData.nextReward = RewardsHandler.getRewardEnum(nextRewardName);
-                playerDataManager.playerData.numRoomsCleared++;
-                playerDataManager.Save();
             }
-
+            playerDataManager.playerData.numRoomsCleared++;
+            playerDataManager.playerData.currentHealth = playerHealth.GetPlayerHealth();
             // Choose the next scene randomly.
             string nextScene = "";
+            if (playerDataManager.playerData.numRoomsCleared % 10 == 0)
+            {
+                nextScene = "FinalScene";
+            }
             do
             {
                 nextScene = scenes[Random.Range(0, scenes.Count)];
@@ -154,8 +158,10 @@ public class PlayerController : MonoBehaviour
         return canOpenDoor;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger");
         if (other.tag == "NextReward")
         {
             nextReward = other.gameObject;
@@ -164,11 +170,12 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Door")
         {
             inInteractRange = true;
-        } else if (other.tag == "Enemy")
-        {
-            TakeDamage(10);
         }
-
+        if (other.tag == "Enemy")
+        {
+            Debug.Log("HERE");
+            TakeDamage(1);
+        }
 
 
         // ..and if the GameObject you intersect has the tag 'Pick Up' assigned to it..
@@ -205,7 +212,7 @@ public class PlayerController : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        health -= damage;
+        playerHealth.TakeDamage(damage);
     }
 
     void SetCountText()

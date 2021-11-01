@@ -285,10 +285,11 @@ GameObject:
   m_Component:
   - component: {fileID: 128323109003134846}
   - component: {fileID: 128323109003134821}
-  - component: {fileID: 128323109003134842}
   - component: {fileID: 128323109003134843}
   - component: {fileID: 128323109003134840}
   - component: {fileID: 128323109003134841}
+  - component: {fileID: 903859918}
+  - component: {fileID: 903859919}
   m_Layer: 3
   m_Name: ely_k_atienza
   m_TagString: Untagged
@@ -340,20 +341,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &128323109003134842
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128323109003134847}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.35346138
-  m_Height: 2.0498574
-  m_Direction: 1
-  m_Center: {x: 0.008843541, y: 0.8730711, z: -0.07292998}
 --- !u!143 &128323109003134843
 CharacterController:
   m_ObjectHideFlags: 0
@@ -415,7 +402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  health: 100
   dashSpeed: 2
   dashDelay: 0.07
   velocity: 1
@@ -433,6 +419,58 @@ MonoBehaviour:
   canOpenDoor: 0
   inInteractRange: 0
   countText: {fileID: 0}
+--- !u!114 &903859918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128323109003134847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2d19bab36957241a4147461b200da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothingTimeFactor: 0.5
+--- !u!114 &903859919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128323109003134847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3bf0299eb028342b39d610c6348690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthTicks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  healthTick: {fileID: 21300000, guid: 74e9effb120ff0f4c9d5515406174120, type: 3}
 --- !u!1 &128323109085175290
 GameObject:
   m_ObjectHideFlags: 0

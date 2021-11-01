@@ -41,10 +41,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.9156179
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: 0.003984928, y: 1.5, z: 0.01085335}
 --- !u!136 &8732650150133680995
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -55,10 +55,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.49381018
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: -0.011213839, y: 1.5, z: -0.006433487}
 --- !u!195 &5777270380019600308
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -97,8 +97,9 @@ MonoBehaviour:
   waypoints: []
   player: {fileID: 0}
   agent: {fileID: 5777270380019600308}
-  chaseRadius: 5
+  chaseRadius: 7
   attackRadius: 2.5
+  waypointPositions: []
 --- !u!1001 &2682904578454830462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,6 +110,10 @@ PrefabInstance:
     - target: {fileID: 100030, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
       propertyPath: m_Name
       value: Mr Grey
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 400030, guid: 647a098ac19a9504ea02872319c753d7, type: 3}
       propertyPath: m_RootOrder
