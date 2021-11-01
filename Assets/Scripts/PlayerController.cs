@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour
             dashCooldownTimer = dashCooldown;
         } else
         {
-            Debug.Log("MOVE");
             characterController.Move(movement * Time.deltaTime);
         }
 
@@ -110,6 +109,7 @@ public class PlayerController : MonoBehaviour
                 string nextRewardName = RemovePrefixAndSuffix(nextReward.name, RewardsHandler.PREVIEW, CLONE);
                 Debug.Log("Setting next room reward to " + nextRewardName);
                 playerDataManager.playerData.nextReward = RewardsHandler.getRewardEnum(nextRewardName);
+                playerDataManager.playerData.numRoomsCleared++;
                 playerDataManager.Save();
             }
 

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [Serializable]
 public class PlayerData
 {
@@ -12,4 +11,5 @@ public class PlayerData
     public int currentHealth = 100;
     public int maxHealth = 100;
     public RewardsHandler.Reward? nextReward = null;
+    public int numRoomsCleared = 0;
 }

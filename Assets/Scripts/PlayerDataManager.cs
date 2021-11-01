@@ -33,6 +33,7 @@ public class PlayerDataManager
         Debug.Log("Score: " + playerData.score);
         Debug.Log("Current Health: " + playerData.currentHealth);
         Debug.Log("Max Health: " + playerData.maxHealth);
+        Debug.Log("Num Rooms Cleared: " + playerData.numRoomsCleared);
         if (playerData.nextReward.HasValue)
             Debug.Log("Next Reward: " + playerData.nextReward.Value);
         Debug.Log("Current Rewards: " + string.Join(", " , playerData.currentRewards));

@@ -9,7 +9,7 @@ public class RewardsHandler : MonoBehaviour
     public static string REWARDS_PATH = "Rewards/";
     public static string PREVIEW = "Preview";
 
-    public GameObject[] rewardWaypoints;
+    public GameObject[] previewRewardWaypoints;
     public GameObject currentRewardWaypoint;
 
     private PlayerDataManager playerDataManager;
@@ -45,7 +45,7 @@ public class RewardsHandler : MonoBehaviour
         }
 
         // Show next rewards for each reward waypoint.
-        foreach (GameObject waypoint in rewardWaypoints)
+        foreach (GameObject waypoint in previewRewardWaypoints)
         {
             bool rewardChosen = false;
             do
