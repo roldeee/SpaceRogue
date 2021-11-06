@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canOpenDoor = false;
     [SerializeField] private bool inInteractRange = false;
 
-    private int count;
-    public TextMeshProUGUI countText;
+    //private int count;
+    //public TextMeshProUGUI countText;
 
     // TODO: Dynamically get all active scenes.
     List<string> scenes = new List<string>
@@ -70,13 +70,14 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         moveXParameterId = Animator.StringToHash("MoveX");
         moveZParameterId = Animator.StringToHash("MoveZ");
-
-        count = 0;
-        SetCountText();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        //count = 0;
+        //SetCountText();
     }
                                                                     
     private void Update()
-    {   
+    {
         if (dashCooldownTimer > 0)
         {
             dashCooldownTimer -= Time.deltaTime;
@@ -115,14 +116,16 @@ public class PlayerController : MonoBehaviour
             playerDataManager.playerData.currentHealth = playerHealth.GetPlayerHealth();
             // Choose the next scene randomly.
             string nextScene = "";
-            if (playerDataManager.playerData.numRoomsCleared % 10 == 0)
+            if (playerDataManager.playerData.numRoomsCleared % 6 == 0)
             {
                 nextScene = "FinalScene";
-            }
-            do
+            } else
             {
-                nextScene = scenes[Random.Range(0, scenes.Count)];
-            } while (nextScene.Length == 0 || nextScene == currentScene);
+                do
+                {
+                    nextScene = scenes[Random.Range(0, scenes.Count)];
+                } while (nextScene.Length == 0 || nextScene == currentScene);
+            }
             SceneManager.LoadScene(nextScene);
         }
         Rotation();
@@ -135,13 +138,13 @@ public class PlayerController : MonoBehaviour
         float startTime = Time.time;
         PlayDashParticles();
         gameObject.layer = 3;
-        Physics.IgnoreLayerCollision(0, 3, true);
+        Physics.IgnoreLayerCollision(3, 7, true);
         while (Time.time < startTime + dashDelay)
         {
             characterController.Move(movement * dashSpeed * Time.deltaTime);
             yield return null;
         }
-        Physics.IgnoreLayerCollision(0, 3, false);
+        Physics.IgnoreLayerCollision(3, 7, false);
         animator.SetBool("isDashing", false);
     }
 
@@ -161,7 +164,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger");
         if (other.tag == "NextReward")
         {
             nextReward = other.gameObject;
@@ -171,9 +173,8 @@ public class PlayerController : MonoBehaviour
         {
             inInteractRange = true;
         }
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && !animator.GetBool("isDashing"))
         {
-            Debug.Log("HERE");
             TakeDamage(1);
         }
 
@@ -184,10 +185,10 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
 
             // Add one to the score variable 'count'
-            count = count + 1;
+            //count = count + 1;
 
             // Run the 'SetCountText()' function (see below)
-            SetCountText();
+            //SetCountText();
         }
     }
 
@@ -215,10 +216,10 @@ public class PlayerController : MonoBehaviour
         playerHealth.TakeDamage(damage);
     }
 
-    void SetCountText()
-    {
-        countText.text = "Food: " + count.ToString();
-    }
+    //void SetCountText()
+    //{
+    //    countText.text = "Food: " + count.ToString();
+    //}
 
     static string RemovePrefixAndSuffix(string str, string prefix, string suffix)
     {

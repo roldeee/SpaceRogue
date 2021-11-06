@@ -122,7 +122,7 @@ public class EnemyAI : MonoBehaviour
     {
         float dist = (player.transform.position - transform.position).magnitude;
         float lookAheadT = dist / agent.speed;
-        Vector3 futureTarget = player.transform.position + lookAheadT * player.GetComponent<VelocityReporter>().velocity;
+        Vector3 futureTarget = player.transform.position;// + lookAheadT * player.GetComponent<VelocityReporter>().velocity;
         return futureTarget;
     }
 

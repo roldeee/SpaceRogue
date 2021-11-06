@@ -5,6 +5,7 @@ using UnityEngine;
 public class RewardObtainer : MonoBehaviour
 {
     private PlayerDataManager playerDataManager;
+    private Texture2DArray arr;
 
     private void Start()
     {

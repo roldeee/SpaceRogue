@@ -418,7 +418,6 @@ MonoBehaviour:
   leftDashParticleSystem: {fileID: 128323110034933666}
   canOpenDoor: 0
   inInteractRange: 0
-  countText: {fileID: 0}
 --- !u!114 &903859918
 MonoBehaviour:
   m_ObjectHideFlags: 0

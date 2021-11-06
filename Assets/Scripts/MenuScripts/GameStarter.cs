@@ -9,5 +9,9 @@ public class GameStarter : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
         Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        PlayerDataManager playerDataManager = PlayerDataManager.Instance;
+        playerDataManager.playerData = new PlayerData();
     }
 }
