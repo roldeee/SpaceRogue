@@ -38,11 +38,9 @@ public class RewardsHandler : MonoBehaviour
         {
             // Load reward prefab
             GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + getRewardStr(playerDataManager.playerData.nextReward.Value));
-            Debug.Log("Next reward --------------: " + REWARDS_PATH + getRewardStr(playerDataManager.playerData.nextReward.Value));
             Instantiate(reward, currentRewardWaypoint.transform.position, Quaternion.identity);
             rewardsUsed.Add(reward.name);
         }
-
         // Show next rewards for each reward waypoint.
         foreach (GameObject waypoint in previewRewardWaypoints)
         {

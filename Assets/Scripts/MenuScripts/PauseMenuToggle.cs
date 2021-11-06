@@ -10,6 +10,8 @@ public class PauseMenuToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
@@ -20,7 +22,9 @@ public class PauseMenuToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape)) {
+        if (Input.GetKeyUp(KeyCode.Escape)) {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
             if (canvasGroup.interactable)
             {
                 canvasGroup.interactable = false;
@@ -30,6 +34,7 @@ public class PauseMenuToggle : MonoBehaviour
             }
             else
             {
+                Cursor.visible = true;
                 canvasGroup.interactable = true;
                 canvasGroup.blocksRaycasts = true;
                 canvasGroup.alpha = 1f;

@@ -8,8 +8,8 @@ public class PlayerData
 {
     public int score = 0;
     public List<RewardsHandler.Reward> currentRewards = new List<RewardsHandler.Reward>();
-    public int currentHealth = 5;
-    public int maxHealth = 5;
+    public int currentHealth = 10;
+    public int maxHealth = 10;
     public RewardsHandler.Reward? nextReward = null;
     public int numRoomsCleared = 0;
 }
