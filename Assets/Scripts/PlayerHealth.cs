@@ -14,17 +14,15 @@ public class PlayerHealth : MonoBehaviour
     {
         playerDataManager = PlayerDataManager.Instance;
         currentHealthTicks = playerDataManager.playerData.currentHealth;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Enable all health ticks
         for (int i = 0; i < healthTicks.Length; i++)
         {
             if (i < currentHealthTicks)
             {
                 healthTicks[i].enabled = true;
-            } else
+            }
+            else
             {
                 healthTicks[i].enabled = false;
             }
@@ -33,8 +31,24 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealthTicks -= damage;
+        // Disable health ticks
+        int newHealthTicks = currentHealthTicks - damage;
+        for (int i = currentHealthTicks; i > newHealthTicks - 1; i--)
+        {
+            healthTicks[i].enabled = false;
+        }
+
+        // Set new health
+        currentHealthTicks = newHealthTicks;
         Debug.Log("Health: " + currentHealthTicks);
+
+        // Show Game Over Menu if dead
+        if (currentHealthTicks <= 0)
+        {
+            GameObject gomObject = GameObject.Find("GameOverMenu");
+            GameOverMenu gameOverMenu = gomObject.GetComponent<GameOverMenu>();
+            gameOverMenu.ShowGameOver();
+        }
     }
 
     public int GetPlayerHealth()
