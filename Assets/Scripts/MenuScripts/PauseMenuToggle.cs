@@ -6,6 +6,7 @@ using UnityEngine;
 public class PauseMenuToggle : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
+    private GameOverMenu gameOverMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,12 @@ public class PauseMenuToggle : MonoBehaviour
         {
             Debug.LogError("No canvas group attached to the pause menu!");
         }
+
+        GameObject gomObject = GameObject.Find("GameOverMenu");
+        if (gomObject == null) {
+            Debug.LogError("Cannot find GameOverMenu game object!");
+        }
+        gameOverMenu = gomObject.GetComponent<GameOverMenu>();
     }
 
     // Update is called once per frame
@@ -25,6 +32,7 @@ public class PauseMenuToggle : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape)) {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
+            // Close Menu
             if (canvasGroup.interactable)
             {
                 canvasGroup.interactable = false;
@@ -32,7 +40,8 @@ public class PauseMenuToggle : MonoBehaviour
                 canvasGroup.alpha = 0f;
                 Time.timeScale = 1f;
             }
-            else
+            // Open Menu (if the game over menu is not visible)
+            else if (!gameOverMenu.menuVisible)
             {
                 Cursor.visible = true;
                 canvasGroup.interactable = true;
@@ -41,6 +50,5 @@ public class PauseMenuToggle : MonoBehaviour
                 Time.timeScale = 0f;
             }
         }
-
     }
 }
