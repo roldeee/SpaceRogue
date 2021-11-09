@@ -12,6 +12,12 @@ public class RoomClearChecker : MonoBehaviour
     private void Start()
     {
         rewardHandler = GetComponent<RewardsHandler>();
+
+        // Check if room was set to 0 enemies
+        if (numEnemies == 0)
+        {
+            isRoomCleared = true;
+        }
     }
     public void CheckRoomCleared()
     {

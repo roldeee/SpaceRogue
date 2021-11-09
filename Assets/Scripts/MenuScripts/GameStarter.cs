@@ -7,7 +7,7 @@ public class GameStarter : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("SpawnScene");
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
