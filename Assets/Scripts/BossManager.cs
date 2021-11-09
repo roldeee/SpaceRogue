@@ -13,4 +13,14 @@ public class BossManager : MonoBehaviour
         roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
         roomClearChecker.setNumEnemies(1);
     }
+
+    private void OnDestroy()
+    {
+        GameObject gomObject = GameObject.Find("GameOverMenu");
+        if (gomObject != null)
+        {
+            GameOverMenu gameOverMenu = gomObject.GetComponent<GameOverMenu>();
+            gameOverMenu.ShowGameOver(true);
+        }
+    }
 }
