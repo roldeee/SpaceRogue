@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 128323109003134841}
   - component: {fileID: 903859918}
   - component: {fileID: 903859919}
+  - component: {fileID: 80105091641027596}
   m_Layer: 3
   m_Name: ely_k_atienza
   m_TagString: Untagged
@@ -470,6 +471,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   healthTick: {fileID: 21300000, guid: 74e9effb120ff0f4c9d5515406174120, type: 3}
+--- !u!114 &80105091641027596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128323109003134847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be66f8261c6f546cc8c6fdb46c656985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &128323109085175290
 GameObject:
   m_ObjectHideFlags: 0
