@@ -45,9 +45,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool canOpenDoor = false;
     [SerializeField] private bool inInteractRange = false;
+    private string interactingDoor;
 
     //private int count;
     //public TextMeshProUGUI countText;
+
+    private MapController mapController;
 
     // TODO: Dynamically get all active scenes.
     List<string> scenes = new List<string>
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
         playerDataManager = PlayerDataManager.Instance;
 
         playerHealth = GetComponent<PlayerHealth>();
+        mapController = GetComponent<MapController>();
         animator = GetComponent<Animator>();
         eventSystem = EventSystem.current;
         roomClearChecker = eventSystem.GetComponent<RoomClearChecker>();
@@ -74,8 +78,50 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         //count = 0;
         //SetCountText();
+
+        // Set visibilty of doors based on level config
+        // TODO: Add non-interactable door for ingress point
+        //GameObject door1 = GameObject.Find("Door1");
+        GameObject door2 = GameObject.Find("Door2");
+        GameObject door3 = GameObject.Find("Door3");
+        GameObject door4 = GameObject.Find("Door4");
+
+        GameObject wall2 = GameObject.Find("Wall2");
+        GameObject wall3 = GameObject.Find("Wall3");
+        GameObject wall4 = GameObject.Find("Wall4");
+
+        LevelTreeNode currentRoom = mapController.GetCurrentRoom();
+        if (door2 != null && currentRoom.d2 == null)
+        {
+            door2.SetActive(false);
+            wall2.SetActive(true);
+        } else if (door2 != null && wall2 != null)
+        {
+            door2.SetActive(true);
+            wall2.SetActive(false);
+        }
+
+        if (door3 != null && currentRoom.d3 == null)
+        {
+            door3.SetActive(false);
+            wall3.SetActive(true);
+        } else if (door3 != null && wall3 != null)
+        {
+            door3.SetActive(true);
+            wall3.SetActive(false);
+        }
+
+        if (door4 != null && currentRoom.d4 == null)
+        {
+            door4.SetActive(false);
+            wall4.SetActive(true);
+        } else if (door4 != null && wall4 != null)
+        {
+            door4.SetActive(true);
+            wall4.SetActive(false);
+        }
     }
-                                                                    
+
     private void Update()
     {
         if (dashCooldownTimer > 0)
@@ -114,18 +160,44 @@ public class PlayerController : MonoBehaviour
             }
             playerDataManager.playerData.numRoomsCleared++;
             playerDataManager.playerData.currentHealth = playerHealth.GetPlayerHealth();
+
+            // TODO: Remove below code once dynamic doors work
             // Choose the next scene randomly.
-            string nextScene = "";
-            if (playerDataManager.playerData.numRoomsCleared % 6 == 0)
+            //string nextScene = "";
+            //if (playerDataManager.playerData.numRoomsCleared % 6 == 0)
+            //{
+            //    nextScene = "FinalScene";
+            //}
+            //else
+            //{
+            //    do
+            //    {
+            //        nextScene = scenes[Random.Range(0, scenes.Count)];
+            //    } while (nextScene.Length == 0 || nextScene == currentScene);
+            //}
+
+            // Determine the next scene to load based on the level config
+            string nextScene;
+
+            switch (interactingDoor)
             {
-                nextScene = "FinalScene";
-            } else
-            {
-                do
-                {
-                    nextScene = scenes[Random.Range(0, scenes.Count)];
-                } while (nextScene.Length == 0 || nextScene == currentScene);
+                case "Door1":
+                    nextScene = mapController.GetNextRoom(1).value;
+                    break;
+                case "Door2":
+                    nextScene = mapController.GetNextRoom(2).value;
+                    break;
+                case "Door3":
+                    nextScene = mapController.GetNextRoom(3).value;
+                    break;
+                case "Door4":
+                    nextScene = mapController.GetNextRoom(4).value;
+                    break;
+                default:
+                    nextScene = null;
+                    break;
             }
+
             SceneManager.LoadScene(nextScene);
         }
         Rotation();
@@ -172,6 +244,8 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Door")
         {
             inInteractRange = true;
+            // Save the door that the player is interacting with
+            interactingDoor = other.name;
         }
         if (other.tag == "Enemy" && !animator.GetBool("isDashing"))
         {
@@ -201,6 +275,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Door")
         {
             inInteractRange = false;
+            interactingDoor = null;
         }
     }
 

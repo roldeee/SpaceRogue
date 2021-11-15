@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpawnScene.unity
     guid: 14037ef8c216b4762a0ca66afc31f635
+  - enabled: 1
+    path: Assets/Scenes/BasicRoom.unity
+    guid: df5bf257303c941a99bc435a35f83011
   m_configObjects: {}
