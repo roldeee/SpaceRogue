@@ -160,6 +160,9 @@ public class PlayerController : MonoBehaviour
 
             switch (interactingDoor)
             {
+                case "Door1":
+                    nextScene = mapController.GetNextRoom(1).value;
+                    break;
                 case "Door2":
                     nextScene = mapController.GetNextRoom(2).value;
                     break;
