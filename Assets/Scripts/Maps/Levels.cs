@@ -1,12 +1,12 @@
-﻿using System;
-
-public class Levels
+﻿public class Levels
 {
     public static LevelTree getLevel1()
     {
-        LevelTree level1 = new LevelTree("SpawnScene");
+        LevelTree level1 = new LevelTree("BasicRoom");
         level1.root
-            .AddRoom(2, "Level2")
+            .AddRoom(2, "BasicRoom")
+            .AddRoom(3, "BasicRoom")
+            .AddRoom(4, "BasicRoom")
             .AddRoom(2, "FinalScene");
 
         return level1;
