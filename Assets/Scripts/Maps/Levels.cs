@@ -4,7 +4,7 @@
     {
         LevelTree level1 = new LevelTree("SpawnScene");
         level1.root
-            .AddRoom(1, "BasicRoom")
+            .AddRoom(1, "StartScene")
             .AddRoom(2, "BasicRoom")
             .AddRoom(3, "BasicRoom")
             .AddRoom(4, "BasicRoom")
