@@ -9,64 +9,52 @@ using System.Collections;
  */
 public class MapController : MonoBehaviour
 {
-    LevelTree level = null;
-    LevelTreeNode currentRoom = null;
+    private PlayerData playerData;
 
-    private void Awake()
+    private void Start()
     {
-        // Assume we're using Level 1 for simplicity
-        level = Levels.getLevel1();
-        currentRoom = level.root;
+        playerData = PlayerDataManager.Instance.playerData;
     }
 
-    public LevelTreeNode getNextRoom(int door)
+    public LevelTreeNode GetCurrentRoom()
+    {
+        return playerData.currentRoom;
+    }
+
+    public LevelTreeNode GetNextRoom(int door)
     {
         switch (door)
         {
             case 1:
-                if (currentRoom.d1 != null)
+                if (playerData.currentRoom.d1 != null)
                 {
-                    currentRoom = currentRoom.d1;
-                    return currentRoom;
+                    playerData.currentRoom = playerData.currentRoom.d1;
+                    return playerData.currentRoom;
                 }
                 return null;
             case 2:
-                if (currentRoom.d2 != null)
+                if (playerData.currentRoom.d2 != null)
                 {
-                    currentRoom = currentRoom.d2;
-                    return currentRoom;
+                    playerData.currentRoom = playerData.currentRoom.d2;
+                    return playerData.currentRoom;
                 }
                 return null;
             case 3:
-                if (currentRoom.d3 != null)
+                if (playerData.currentRoom.d3 != null)
                 {
-                    currentRoom = currentRoom.d3;
-                    return currentRoom;
+                    playerData.currentRoom = playerData.currentRoom.d3;
+                    return playerData.currentRoom;
                 }
                 return null;
             case 4:
-                if (currentRoom.d4 != null)
+                if (playerData.currentRoom.d4 != null)
                 {
-                    currentRoom = currentRoom.d4;
-                    return currentRoom;
+                    playerData.currentRoom = playerData.currentRoom.d4;
+                    return playerData.currentRoom;
                 }
                 return null;
             default:
                 return null;
         }
-    }
-
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

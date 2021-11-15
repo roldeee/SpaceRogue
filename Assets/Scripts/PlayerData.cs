@@ -12,4 +12,7 @@ public class PlayerData
     public int maxHealth = 10;
     public RewardsHandler.Reward? nextReward = null;
     public int numRoomsCleared = 0;
+
+    // Assume level 1 for simplicity
+    public LevelTreeNode currentRoom = Levels.getLevel1().root;
 }
