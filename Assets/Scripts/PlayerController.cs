@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private PlayerDataManager playerDataManager;
     public CharacterController characterController;
 
+    private int dashCharges;
+    private int currentDashCharges;
     private Animator animator;
     private int moveXParameterId;
     private int moveZParameterId;
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
         roomClearChecker = eventSystem.GetComponent<RoomClearChecker>();
         currentScene = SceneManager.GetActiveScene().name;
         movement = Vector3.zero;
+        dashCharges = playerDataManager.playerData.dashCharges;
+        currentDashCharges = dashCharges;
         characterController = GetComponent<CharacterController>();
         moveXParameterId = Animator.StringToHash("MoveX");
         moveZParameterId = Animator.StringToHash("MoveZ");
@@ -124,9 +128,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        dashCharges = playerDataManager.playerData.dashCharges;
         if (dashCooldownTimer > 0)
         {
             dashCooldownTimer -= Time.deltaTime;
+        } else
+        {
+            if (currentDashCharges < dashCharges)
+            {
+                currentDashCharges += 1;
+            }
         }
         movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         movement *= speed;
@@ -135,10 +146,11 @@ public class PlayerController : MonoBehaviour
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         animationBlend = Vector2.SmoothDamp(animationBlend, input, ref animationVelocity, animationSmoothTime);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !animator.GetBool("isDashing") && (currentDashCharges > 0 || dashCooldownTimer <= 0))
         { 
             StartCoroutine(Dashing(movement));
             dashCooldownTimer = dashCooldown;
+            currentDashCharges -= 1;
         } else
         {
             characterController.Move(movement * Time.deltaTime);
@@ -156,7 +168,7 @@ public class PlayerController : MonoBehaviour
                 // Save the next reward to player data for use in the next scene.
                 string nextRewardName = RemovePrefixAndSuffix(nextReward.name, RewardsHandler.PREVIEW, CLONE);
                 Debug.Log("Setting next room reward to " + nextRewardName);
-                playerDataManager.playerData.nextReward = RewardsHandler.getRewardEnum(nextRewardName);
+                playerDataManager.playerData.nextReward = RewardsHandler.GetRewardEnum(nextRewardName);
             }
             playerDataManager.playerData.numRoomsCleared++;
             playerDataManager.playerData.currentHealth = playerHealth.GetPlayerHealth();
