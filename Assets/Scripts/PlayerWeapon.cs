@@ -23,6 +23,7 @@ public class PlayerWeapon : MonoBehaviour
         nextShootTime = Time.time + fireRate;
         Projectile newProjectile = Instantiate(projectile, transform.position + transform.forward, transform.rotation);
         newProjectile.Fire(transform.forward);
+        EventManager.TriggerEvent<PlayerShootsEvent, Vector3>(transform.position);
     }
 
     bool CanShoot() => Time.time >= nextShootTime;

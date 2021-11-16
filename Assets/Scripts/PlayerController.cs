@@ -246,6 +246,10 @@ public class PlayerController : MonoBehaviour
             inInteractRange = true;
             // Save the door that the player is interacting with
             interactingDoor = other.name;
+            if (DoorCanOpen()) {
+                Debug.Log("llamas");
+                EventManager.TriggerEvent<DoorOpensEvent, Vector3>(transform.position);
+            }
         }
         if (other.tag == "Enemy" && !animator.GetBool("isDashing"))
         {
