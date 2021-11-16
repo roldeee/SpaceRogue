@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 80105091641027596}
   m_Layer: 3
   m_Name: ely_k_atienza
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  dashSpeed: 2
+  dashSpeed: 3.5
   dashDelay: 0.07
   velocity: 1
   dashCooldown: 0.5
@@ -20791,7 +20791,7 @@ GameObject:
   - component: {fileID: 128323109845009430}
   m_Layer: 3
   m_Name: SciFiGunLightBlack
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20873,6 +20873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.1
   projectile: {fileID: -4664737514004008602, guid: 638e204ccc466d74aa0ff0bb250d447b, type: 3}
+  doubleFireProjectile: {fileID: 6203248575317112460, guid: e16245285e868c8449b8d0a5ed69d796, type: 3}
+  spreadFireProjectile: {fileID: 3539882478394242312, guid: 531896b479e328a43bd368fd79085b20, type: 3}
+  spreadFireRate: 0.15
 --- !u!1 &128323109867311741
 GameObject:
   m_ObjectHideFlags: 0

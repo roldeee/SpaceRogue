@@ -14,8 +14,11 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    { 
-        Destroy(gameObject); // Destroy projectile on collisions.
+    {
+        if (!collision.gameObject.name.Contains("GunProjectile"))
+        {
+            Destroy(gameObject); // Destroy projectile on collisions.
+        }
     }
 
     private void Start()

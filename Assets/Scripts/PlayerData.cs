@@ -12,6 +12,9 @@ public class PlayerData
     public int maxHealth = 10;
     public RewardsHandler.Reward? nextReward = null;
     public int numRoomsCleared = 0;
+    public PlayerWeapon.FIRE_TYPE currentFireType = PlayerWeapon.FIRE_TYPE.SINGLE_FIRE;
+    public int dashCharges = 1;
+    public bool hasAutoRes = false;
 
     // Assume level 1 for simplicity
     public LevelTreeNode currentRoom = Levels.getLevel1().root;

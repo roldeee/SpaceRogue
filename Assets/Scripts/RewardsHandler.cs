@@ -13,7 +13,7 @@ public class RewardsHandler : MonoBehaviour
 
     private PlayerDataManager playerDataManager;
 
-    public enum Reward { HEALING, MAX_HEALTH_BOOST, SPREAD_FIRE, DOUBLE_FIRE, EXTRA_DASH, AUTO_RES };
+    public enum Reward { HEALING, SPREAD_FIRE, DOUBLE_FIRE, EXTRA_DASH, AUTO_RES };
 
     List<Reward> possibleRewards;
 
@@ -28,7 +28,7 @@ public class RewardsHandler : MonoBehaviour
         }
     }
 
-    public void showRewards()
+    public void ShowRewards()
     {
         List<string> rewardsUsed = new List<string>();
         Reward? nextReward = playerDataManager.playerData.nextReward;
@@ -37,7 +37,7 @@ public class RewardsHandler : MonoBehaviour
         if (nextReward.HasValue)
         {
             // Load reward prefab
-            GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + getRewardStr(playerDataManager.playerData.nextReward.Value));
+            GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + GetRewardStr(playerDataManager.playerData.nextReward.Value));
             Instantiate(reward, currentRewardWaypoint.transform.position, Quaternion.identity);
             rewardsUsed.Add(reward.name);
         }
@@ -48,7 +48,7 @@ public class RewardsHandler : MonoBehaviour
             do
             {
                 // Choose random next reward that hasn't been used and create it.
-                string rewardStr = getRewardStr(possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)]);
+                string rewardStr = GetRewardStr(possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)]);
                 if (!rewardsUsed.Contains(rewardStr))
                 {
                     rewardsUsed.Add(rewardStr);
@@ -60,14 +60,12 @@ public class RewardsHandler : MonoBehaviour
         }
     }
 
-    static public string getRewardStr(Reward reward)
+    static public string GetRewardStr(Reward reward)
     {
         switch (reward)
         {
             case Reward.HEALING:
                 return "HealingReward";
-            case Reward.MAX_HEALTH_BOOST:
-                return "MaxHealthReward";
             case Reward.SPREAD_FIRE:
                 return "SpreadFireReward";
             case Reward.DOUBLE_FIRE:
@@ -81,14 +79,12 @@ public class RewardsHandler : MonoBehaviour
         }
     }
 
-    static public Reward getRewardEnum(string reward)
+    static public Reward GetRewardEnum(string reward)
     {
         switch (reward)
         {
             case "HealingReward":
                 return Reward.HEALING;
-            case "MaxHealthReward":
-                return Reward.MAX_HEALTH_BOOST;
             case "SpreadFireReward":
                 return Reward.SPREAD_FIRE;
             case "DoubleFireReward":

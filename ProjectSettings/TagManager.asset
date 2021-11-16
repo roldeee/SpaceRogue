@@ -9,6 +9,7 @@ TagManager:
   - Food
   - Room
   - NextReward
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX

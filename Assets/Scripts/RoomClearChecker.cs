@@ -13,11 +13,20 @@ public class RoomClearChecker : MonoBehaviour
     {
         rewardHandler = GetComponent<RewardsHandler>();
     }
+
+    private void Update()
+    {
+        if (!isRoomCleared)
+        {
+            CheckRoomCleared();
+        }
+    }
+
     public void CheckRoomCleared()
     {
         if (numEnemies == 0)
         {
-            rewardHandler.showRewards();
+            rewardHandler.ShowRewards();
             isRoomCleared = true;
         };
     }
@@ -30,6 +39,7 @@ public class RoomClearChecker : MonoBehaviour
     public void setNumEnemies(int count)
     {
         numEnemies = count;
+        Debug.Log("NUM ENEMIES: " + count);
         // Check if room was set to 0 enemies
         if (numEnemies == 0)
         {

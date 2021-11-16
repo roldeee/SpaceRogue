@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     public float attackRadius = 2.5f;
     RoomClearChecker roomClearChecker;
     EventSystem eventSystem;
+    
+    private bool isDead = false;
 
     private enum AIState
     {
@@ -137,11 +139,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Die()
     {
-        GetComponent<Collider>().enabled = false;
-        agent.enabled = false;
-        roomClearChecker.RemoveEnemy();
-        Destroy(transform.root.gameObject); // delete the parent object.
-        //animator.SetTrigger("isDead"); # TODO: Enable when death animations are setup.
+        if (!isDead)
+        {
+            Destroy(transform.root.gameObject); // delete the parent object.
+            roomClearChecker.RemoveEnemy();
+            //animator.SetTrigger("isDead"); # TODO: Enable when death animations are setup.
+            isDead = true;
+        } 
     }
 }
 
