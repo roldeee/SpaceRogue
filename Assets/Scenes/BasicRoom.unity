@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74968409}
   m_Layer: 0
-  m_Name: Waypoint
+  m_Name: Waypoint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1311744207}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &401822256 stripped
 MonoBehaviour:
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 496276315}
   m_Layer: 0
-  m_Name: Waypoint (2)
+  m_Name: Waypoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1311744207}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &520042499 stripped
 MonoBehaviour:
@@ -705,7 +705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1066445916}
   m_Layer: 0
-  m_Name: Waypoint (1)
+  m_Name: Waypoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +723,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1311744207}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1183572336
 PrefabInstance:
@@ -833,9 +833,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 74968409}
   - {fileID: 1066445916}
   - {fileID: 496276315}
+  - {fileID: 74968409}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1392,15 +1392,15 @@ PrefabInstance:
     - target: {fileID: 2427089904419144569, guid: e595b783d218e0f47b7182531f2313d6, type: 3}
       propertyPath: previewRewardWaypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 74968408}
+      objectReference: {fileID: 1066445915}
     - target: {fileID: 2427089904419144569, guid: e595b783d218e0f47b7182531f2313d6, type: 3}
       propertyPath: previewRewardWaypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1066445915}
+      objectReference: {fileID: 496276314}
     - target: {fileID: 2427089904419144569, guid: e595b783d218e0f47b7182531f2313d6, type: 3}
       propertyPath: previewRewardWaypoints.Array.data[2]
       value: 
-      objectReference: {fileID: 496276314}
+      objectReference: {fileID: 74968408}
     - target: {fileID: 2427089904419144571, guid: e595b783d218e0f47b7182531f2313d6, type: 3}
       propertyPath: m_RootOrder
       value: 4

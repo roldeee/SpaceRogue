@@ -84,46 +84,7 @@ public class PlayerController : MonoBehaviour
         //SetCountText();
 
         // Set visibilty of doors based on level config
-        // TODO: Add non-interactable door for ingress point
-        //GameObject door1 = GameObject.Find("Door1");
-        GameObject door2 = GameObject.Find("Door2");
-        GameObject door3 = GameObject.Find("Door3");
-        GameObject door4 = GameObject.Find("Door4");
-
-        GameObject wall2 = GameObject.Find("Wall2");
-        GameObject wall3 = GameObject.Find("Wall3");
-        GameObject wall4 = GameObject.Find("Wall4");
-
-        LevelTreeNode currentRoom = mapController.GetCurrentRoom();
-        if (door2 != null && currentRoom.d2 == null)
-        {
-            door2.SetActive(false);
-            wall2.SetActive(true);
-        } else if (door2 != null && wall2 != null)
-        {
-            door2.SetActive(true);
-            wall2.SetActive(false);
-        }
-
-        if (door3 != null && currentRoom.d3 == null)
-        {
-            door3.SetActive(false);
-            wall3.SetActive(true);
-        } else if (door3 != null && wall3 != null)
-        {
-            door3.SetActive(true);
-            wall3.SetActive(false);
-        }
-
-        if (door4 != null && currentRoom.d4 == null)
-        {
-            door4.SetActive(false);
-            wall4.SetActive(true);
-        } else if (door4 != null && wall4 != null)
-        {
-            door4.SetActive(true);
-            wall4.SetActive(false);
-        }
+        mapController.SetDoorVisibility();
     }
 
     private void Update()

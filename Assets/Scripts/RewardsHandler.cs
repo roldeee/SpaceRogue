@@ -32,7 +32,7 @@ public class RewardsHandler : MonoBehaviour
     {
         List<string> rewardsUsed = new List<string>();
         Reward? nextReward = playerDataManager.playerData.nextReward;
-        
+
         // Show current room reward
         if (nextReward.HasValue)
         {
@@ -44,19 +44,22 @@ public class RewardsHandler : MonoBehaviour
         // Show next rewards for each reward waypoint.
         foreach (GameObject waypoint in previewRewardWaypoints)
         {
-            bool rewardChosen = false;
-            do
+            if (waypoint.activeInHierarchy)
             {
-                // Choose random next reward that hasn't been used and create it.
-                string rewardStr = GetRewardStr(possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)]);
-                if (!rewardsUsed.Contains(rewardStr))
+                bool rewardChosen = false;
+                do
                 {
-                    rewardsUsed.Add(rewardStr);
-                    GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + PREVIEW + rewardStr); // Use preview reward prefabs.
-                    Instantiate(reward, waypoint.transform.position, Quaternion.identity);
-                    rewardChosen = true;
-                }
-            } while (rewardChosen == false);
+                    // Choose random next reward that hasn't been used and create it.
+                    string rewardStr = GetRewardStr(possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)]);
+                    if (!rewardsUsed.Contains(rewardStr))
+                    {
+                        rewardsUsed.Add(rewardStr);
+                        GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + PREVIEW + rewardStr); // Use preview reward prefabs.
+                        Instantiate(reward, waypoint.transform.position, Quaternion.identity);
+                        rewardChosen = true;
+                    }
+                } while (rewardChosen == false);
+            }
         }
     }
 
