@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74968409}
   m_Layer: 0
-  m_Name: Waypoint4
+  m_Name: Waypoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 496276315}
   m_Layer: 0
-  m_Name: Waypoint3
+  m_Name: Waypoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -635,7 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1066445916}
   m_Layer: 0
-  m_Name: Waypoint2
+  m_Name: Waypoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1007,15 +1007,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6891946346482334933, guid: 9bae2ba37b3b610498de193dea90383f, type: 3}
       propertyPath: m_Name
-      value: Door2
+      value: Door1
       objectReference: {fileID: 0}
     - target: {fileID: 7408718835044704643, guid: 9bae2ba37b3b610498de193dea90383f, type: 3}
       propertyPath: m_Name
-      value: Door3
+      value: Door2
       objectReference: {fileID: 0}
     - target: {fileID: 8298428782382096032, guid: 9bae2ba37b3b610498de193dea90383f, type: 3}
       propertyPath: m_Name
-      value: Door4
+      value: Door3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bae2ba37b3b610498de193dea90383f, type: 3}

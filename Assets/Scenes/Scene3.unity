@@ -333,7 +333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 103644, guid: a4c18952442944083b1fddc06ba477c2, type: 3}
       propertyPath: m_Name
-      value: Wall2
+      value: Wall1
       objectReference: {fileID: 0}
     - target: {fileID: 103644, guid: a4c18952442944083b1fddc06ba477c2, type: 3}
       propertyPath: m_Layer
@@ -1071,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7892969982713507898, guid: b4506fadf80f754419fbf329db1d7015, type: 3}
       propertyPath: m_Name
-      value: Door2
+      value: Door1
       objectReference: {fileID: 0}
     - target: {fileID: 7892969982713507898, guid: b4506fadf80f754419fbf329db1d7015, type: 3}
       propertyPath: m_IsActive
@@ -1385,7 +1385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010263806}
   m_Layer: 0
-  m_Name: Waypoint2
+  m_Name: Waypoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

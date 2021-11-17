@@ -568,7 +568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 670316560}
   m_Layer: 0
-  m_Name: Waypoint3
+  m_Name: Waypoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -794,7 +794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818230367}
   m_Layer: 6
-  m_Name: Wall2
+  m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,7 +1271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1537779612}
   m_Layer: 6
-  m_Name: Wall3
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1332,7 +1332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1819965705}
   m_Layer: 0
-  m_Name: Waypoint2
+  m_Name: Waypoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2207,11 +2207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865075477829639175, guid: 839cdb838f28fd443bbe28fc3bb557ca, type: 3}
       propertyPath: m_Name
-      value: Door3
+      value: Door2
       objectReference: {fileID: 0}
     - target: {fileID: 7103711852038691907, guid: 839cdb838f28fd443bbe28fc3bb557ca, type: 3}
       propertyPath: m_Name
-      value: Door2
+      value: Door1
       objectReference: {fileID: 0}
     - target: {fileID: 7103711852038691907, guid: 839cdb838f28fd443bbe28fc3bb557ca, type: 3}
       propertyPath: m_IsActive
