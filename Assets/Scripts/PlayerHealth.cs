@@ -66,6 +66,10 @@ public class PlayerHealth : MonoBehaviour
                 ShowHealth();
                 return;
             }
+
+            // Save win streak
+            PersistedDataHelper.ResetWinStreak();
+
             GameObject gomObject = GameObject.Find("GameOverMenu");
             GameOverMenu gameOverMenu = gomObject.GetComponent<GameOverMenu>();
             gameOverMenu.ShowGameOver();
