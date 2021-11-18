@@ -16,6 +16,9 @@ public class BossManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Save win streak
+        PersistedDataHelper.IncrementWinStreak();
+
         GameObject gomObject = GameObject.Find("GameOverMenu");
         if (gomObject != null)
         {
