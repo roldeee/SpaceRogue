@@ -17,5 +17,5 @@ public class PlayerData
     public bool hasAutoRes = false;
 
     // Assume level 1 for simplicity
-    public LevelTreeNode currentRoom = Levels.getLevel1().root;
+    public LevelTreeNode currentRoom = Levels.GetProceduralLevel2().root;
 }
