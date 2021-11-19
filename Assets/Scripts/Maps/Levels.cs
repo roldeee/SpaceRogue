@@ -69,12 +69,17 @@ public class Levels
 
     public static LevelTree GetProceduralLevel2()
     {
-        LevelTree level = new LevelTree("SpawnScene");
-
-        LevelTreeNode currRoom = level.root.AddRoom(1, "StartScene");
-
         string[] roomNames = new string[rooms.Keys.Count];
         rooms.Keys.CopyTo(roomNames, 0);
+
+        LevelTree level = new LevelTree("SpawnScene");
+        LevelTreeNode currRoom = level.root;
+
+        // Add initial connecting room
+        int randomRoomIndex = Random.Range(0, roomNames.Length);
+        string randomRoomName = roomNames[randomRoomIndex];
+        currRoom = currRoom.AddRoom(1, randomRoomName);
+
 
         int min = 10;
         int max = 15;
