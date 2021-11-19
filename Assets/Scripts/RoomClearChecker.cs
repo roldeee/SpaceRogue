@@ -39,7 +39,7 @@ public class RoomClearChecker : MonoBehaviour
     public void setNumEnemies(int count)
     {
         numEnemies = count;
-        Debug.Log("NUM ENEMIES: " + count);
+        //Debug.Log("NUM ENEMIES: " + count);
         // Check if room was set to 0 enemies
         if (numEnemies == 0)
         {
@@ -50,7 +50,7 @@ public class RoomClearChecker : MonoBehaviour
     public void RemoveEnemy()
     {
         numEnemies--;
-        Debug.Log("Num enemies remaining: " + numEnemies);
+        //Debug.Log("Num enemies remaining: " + numEnemies);
         if (numEnemies < 0)
         {
             throw new System.Exception("Number of enemies is negative.");
