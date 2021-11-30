@@ -38,7 +38,7 @@ public class PlayerWeapon : MonoBehaviour
             Projectile newProjectile = Instantiate(projectile, transform.position + transform.forward, transform.rotation);
 
             // TODO: Set Damage based on difficulty
-            // newProjectile.damage = 10;
+             newProjectile.damage = 10;
 
             newProjectile.Fire(transform.forward);
             EventManager.TriggerEvent<PlayerShootsEvent, Vector3>(transform.position);

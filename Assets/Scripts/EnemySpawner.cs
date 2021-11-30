@@ -25,9 +25,9 @@ public class EnemySpawner : MonoBehaviour
             EnemyAI ai = newEnemy.GetComponentInChildren<EnemyAI>();
             ai.player = player;
 
-            // TODO: Set Enemy Health based on difficulty
-            //EnemyHealth enemyHealth = newEnemy.GetComponentInChildren<EnemyHealth>();
-            //enemyHealth.enemyHealth = 100;
+            // Set Enemy Health based on difficulty (each win increases number of hits it takes to kill an enemy)
+            EnemyHealth enemyHealth = newEnemy.GetComponentInChildren<EnemyHealth>();
+            enemyHealth.enemyHealth = 10 + (5 * (PersistedDataHelper.GetWinStreak()));
 
             Vector3[] randomWaypoints = new Vector3[numberOfWaypoints];
             for (int j = 0; j < numberOfWaypoints; j++)
