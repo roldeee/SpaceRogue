@@ -5,8 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed;
+    public int damage = 10;
    
-   public void Fire(Vector3 direction)
+    public void Fire(Vector3 direction)
     {
         direction.Normalize();
         transform.up = direction;

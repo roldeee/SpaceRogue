@@ -100,6 +100,19 @@ MonoBehaviour:
   chaseRadius: 10
   attackRadius: 2.5
   waypointPositions: []
+--- !u!114 &3591163133577646748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2682904578454731712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796e78d51d7c48f4eb9d5de4d988f81a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 10
 --- !u!1001 &2682904578454830462
 PrefabInstance:
   m_ObjectHideFlags: 0

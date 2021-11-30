@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     public float attackRadius = 2.5f;
     RoomClearChecker roomClearChecker;
     EventSystem eventSystem;
+    EnemyHealth enemyHealth;
     
     private bool isDead = false;
 
@@ -29,9 +30,11 @@ public class EnemyAI : MonoBehaviour
     private int currWaypoint = -1;
     private AIState aiState;
     public Vector3[] waypointPositions;
+
     // Start is called before the first frame update
     void Start()
     {
+        enemyHealth = GetComponent<EnemyHealth>();
         roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
         if (waypoints.Length > 0)
         {
@@ -130,10 +133,19 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        var projectile = collision.collider.GetComponent<Projectile>();
+        Projectile projectile = collision.collider.GetComponent<Projectile>();
         if (projectile != null)
         {
-            Die();
+            TakeDamage(projectile.damage);
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        enemyHealth.enemyHealth -= damage;
+        if (enemyHealth.enemyHealth <= 0)
+        {
+            roomClearChecker.RemoveEnemy();
         }
     }
 

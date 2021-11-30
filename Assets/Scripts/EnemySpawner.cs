@@ -24,6 +24,11 @@ public class EnemySpawner : MonoBehaviour
             GameObject newEnemy = Instantiate(enemyPrefab, GetRandomLocationOnNavMesh(spawnRadius), Quaternion.identity);
             EnemyAI ai = newEnemy.GetComponentInChildren<EnemyAI>();
             ai.player = player;
+
+            // TODO: Set Enemy Health based on difficulty
+            //EnemyHealth enemyHealth = newEnemy.GetComponentInChildren<EnemyHealth>();
+            //enemyHealth.enemyHealth = 100;
+
             Vector3[] randomWaypoints = new Vector3[numberOfWaypoints];
             for (int j = 0; j < numberOfWaypoints; j++)
             {

@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        if (enemyHealth == 0)
+        if (enemyHealth <= 0)
         {
             Destroy(gameObject);
         }
