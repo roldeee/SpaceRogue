@@ -85,6 +85,8 @@ public class PlayerController : MonoBehaviour
 
         // Set visibilty of doors based on level config
         mapController.SetDoorVisibility();
+
+        SetRoomCount();
     }
 
     private void Update()
@@ -329,6 +331,24 @@ public class PlayerController : MonoBehaviour
             // Left
             leftDashParticleSystem.Play();
             return;
+        }
+    }
+
+    public void SetRoomCount()
+    {
+        GameObject countText = GameObject.Find("RoomCountText");
+
+        if (countText != null)
+        {
+            TextMeshProUGUI countTextMesh = countText.GetComponent<TextMeshProUGUI>();
+            countTextMesh.SetText("Count: " + playerDataManager.playerData.numRoomsCleared);
+            // For some reason the log is needed in order for the color to change in the GUI...
+            Debug.Log(countTextMesh.faceColor);
+            countTextMesh.faceColor = new Color32(255, 255, 255, 255);
+        }
+        else
+        {
+            Debug.Log("RoomCountText not found");
         }
     }
 }

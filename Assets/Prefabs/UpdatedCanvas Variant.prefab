@@ -1882,6 +1882,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2640971712536382475, guid: 16084db4a7c8dd54e9c7bbc7d400928a, type: 3}
+      propertyPath: m_Name
+      value: RoomCountText
+      objectReference: {fileID: 0}
     - target: {fileID: 2640971713471445248, guid: 16084db4a7c8dd54e9c7bbc7d400928a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1968,7 +1972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2640971713471445252, guid: 16084db4a7c8dd54e9c7bbc7d400928a, type: 3}
       propertyPath: m_Name
-      value: UpdatedCanvas
+      value: UpdatedCanvas Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2640971713471445254, guid: 16084db4a7c8dd54e9c7bbc7d400928a, type: 3}
       propertyPath: m_UiScaleMode
