@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         // Disable health ticks
-        int newHealthTicks = currentHealthTicks - damage;
+        int newHealthTicks = Math.Max(currentHealthTicks - damage, 0);
         for (int i = currentHealthTicks; i > newHealthTicks - 1; i--)
         {
             healthTicks[i].enabled = false;

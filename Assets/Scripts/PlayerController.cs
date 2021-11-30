@@ -231,6 +231,11 @@ public class PlayerController : MonoBehaviour
             TakeDamage(1);
         }
 
+        if (other.tag == "BossEnemy" && !animator.GetBool("isDashing"))
+        {
+            TakeDamage(3);
+        }
+
 
         // ..and if the GameObject you intersect has the tag 'Pick Up' assigned to it..
         if (other.gameObject.CompareTag("Food"))

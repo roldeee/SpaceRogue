@@ -10,6 +10,7 @@ TagManager:
   - Room
   - NextReward
   - PlayerWeapon
+  - BossEnemy
   layers:
   - Default
   - TransparentFX

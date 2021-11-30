@@ -143,9 +143,11 @@ public class EnemyAI : MonoBehaviour
     private void TakeDamage(int damage)
     {
         enemyHealth.enemyHealth -= damage;
-        if (enemyHealth.enemyHealth <= 0)
+        if (enemyHealth.enemyHealth <= 0 && !isDead)
         {
+            Destroy(transform.root.gameObject);
             roomClearChecker.RemoveEnemy();
+            isDead = true;
         }
     }
 

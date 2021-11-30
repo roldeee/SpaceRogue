@@ -860,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eaa8252b1371eac4db0d23cb68ddd4e1, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: BossEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 1026238369762761859, guid: eaa8252b1371eac4db0d23cb68ddd4e1, type: 3}
       propertyPath: m_Layer
