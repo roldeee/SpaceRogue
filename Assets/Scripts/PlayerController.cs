@@ -222,7 +222,6 @@ public class PlayerController : MonoBehaviour
             // Save the door that the player is interacting with
             interactingDoor = other.name;
             if (DoorCanOpen()) {
-                Debug.Log("llamas");
                 EventManager.TriggerEvent<DoorOpensEvent, Vector3>(transform.position);
             }
         }

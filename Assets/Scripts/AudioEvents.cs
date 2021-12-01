@@ -6,3 +6,5 @@ using UnityEngine.Events;
 public class PlayerShootsEvent : UnityEvent<Vector3>{}
 
 public class DoorOpensEvent : UnityEvent<Vector3>{}
+
+public class PlayerDamageEvent : UnityEvent<Vector3>{}

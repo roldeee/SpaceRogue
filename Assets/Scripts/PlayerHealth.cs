@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -55,6 +56,9 @@ public class PlayerHealth : MonoBehaviour
         // Set new health
         currentHealthTicks = newHealthTicks;
         Debug.Log("Health: " + currentHealthTicks);
+
+        // Audio and Visual Effect
+        EventManager.TriggerEvent<PlayerDamageEvent, Vector3>(transform.position);
 
         // Show Game Over Menu if dead
         if (currentHealthTicks <= 0)
