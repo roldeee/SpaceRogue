@@ -13,7 +13,7 @@ public class BossManager : MonoBehaviour
     {
         // Set Enemy Health based on difficulty (each win increases number of hits it takes to kill an enemy)
         enemyHealth = GetComponent<EnemyHealth>();
-        enemyHealth.enemyHealth = 100  + (25 * (PersistedDataHelper.GetWinStreak()));
+        enemyHealth.SetHealth(100  + (25 * (PersistedDataHelper.GetWinStreak())));
 
         roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
         roomClearChecker.setNumEnemies(1);
