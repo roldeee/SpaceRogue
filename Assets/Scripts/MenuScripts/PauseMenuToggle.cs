@@ -7,6 +7,7 @@ public class PauseMenuToggle : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
     private GameOverMenu gameOverMenu;
+    private EntryMenu entryMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,20 @@ public class PauseMenuToggle : MonoBehaviour
         GameObject gomObject = GameObject.Find("GameOverMenu");
         if (gomObject == null) {
             Debug.LogError("Cannot find GameOverMenu game object!");
+        } else
+        {
+            gameOverMenu = gomObject.GetComponent<GameOverMenu>();
         }
-        gameOverMenu = gomObject.GetComponent<GameOverMenu>();
+
+        GameObject entryMenuObject = GameObject.Find("EntryMenu");
+        if (entryMenuObject == null)
+        {
+            Debug.Log("Cannot find EntryMenu game object!");
+        } else
+        {
+            entryMenu = entryMenuObject.GetComponent<EntryMenu>();
+        }
+
     }
 
     // Update is called once per frame
@@ -43,6 +56,11 @@ public class PauseMenuToggle : MonoBehaviour
             // Open Menu (if the game over menu is not visible)
             else if (!gameOverMenu.menuVisible)
             {
+                if (entryMenu != null && entryMenu.menuVisible)
+                {
+                    return;
+                }
+
                 Cursor.visible = true;
                 canvasGroup.interactable = true;
                 canvasGroup.blocksRaycasts = true;
