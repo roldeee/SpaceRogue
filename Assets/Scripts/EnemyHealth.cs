@@ -4,13 +4,31 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int enemyHealth = 100;
+    public EnemyHealthBar enemyHealthBar;
+
+    public int health
+    {
+        get;
+        private set;
+    } = 100;
 
     private void Update()
     {
-        if (enemyHealth <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetHealth(int health)
+    {
+        this.health = health;
+        enemyHealthBar.SetMaxHealth(health);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        enemyHealthBar.SetHealth(health);
     }
 }
