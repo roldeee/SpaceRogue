@@ -55,7 +55,7 @@ public class RewardsHandler : MonoBehaviour
                     {
                         rewardsUsed.Add(rewardStr);
                         GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + PREVIEW + rewardStr); // Use preview reward prefabs.
-                        Instantiate(reward, waypoint.transform.position, Quaternion.identity);
+                        Instantiate(reward, waypoint.transform.position, waypoint.transform.rotation);
                         rewardChosen = true;
                     }
                 } while (rewardChosen == false);
