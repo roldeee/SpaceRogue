@@ -38,7 +38,7 @@ public class RewardsHandler : MonoBehaviour
         {
             // Load reward prefab
             GameObject reward = Resources.Load<GameObject>(REWARDS_PATH + GetRewardStr(playerDataManager.playerData.nextReward.Value));
-            Instantiate(reward, currentRewardWaypoint.transform.position, Quaternion.identity);
+            Instantiate(reward, currentRewardWaypoint.transform.position, currentRewardWaypoint.transform.rotation);
             rewardsUsed.Add(reward.name);
         }
         // Show next rewards for each reward waypoint.
