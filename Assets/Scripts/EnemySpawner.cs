@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject player;
     public int numberOfEnemies = 1;
+    public int enemyScale = 1;
     public int numberOfWaypoints = 2;
     public float spawnRadius = 15f;
 
@@ -18,7 +19,17 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
+        // get player data
+        PlayerData playerData = PlayerDataManager.Instance.playerData;
+        // get num rooms cleared
+        int numRoomsCleared = playerData.numRoomsCleared;
+        // get win streak
+        int winStreak = PersistedDataHelper.GetWinStreak();
+        // write formula for number of enemies
+        int enemyCalc = ((winStreak + 1) * enemyScale) + (numRoomsCleared / 2);
+        numberOfEnemies = Mathf.Min(enemyCalc, enemyScale * 8);
         roomClearChecker.setNumEnemies(numberOfEnemies);
+        Debug.Log("Num enemies: " + numberOfEnemies.ToString());
         for (int i = 0; i < numberOfEnemies; i++)
         {
             GameObject newEnemy = Instantiate(enemyPrefab, GetRandomLocationOnNavMesh(spawnRadius), Quaternion.identity);

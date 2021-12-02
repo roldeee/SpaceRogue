@@ -96,8 +96,8 @@ public class EnemyAI : MonoBehaviour
                 }
                 else 
                 {
+                    transform.LookAt(player.transform, Vector3.up);
                     animator.SetBool("Attacking", true);
-                    // animate
                 }
             break;
             case AIState.Idle:

@@ -623,6 +623,8 @@ MonoBehaviour:
   playerShootsAudio: {fileID: 8300000, guid: 4944cbf2abad81743988cad9fdef0b41, type: 3}
   doorOpensAudio: {fileID: 8300000, guid: 21d0fb0cb62923c4f99e7034ba30c670, type: 3}
   playerDamagedAudio: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
+  enemyDamagedAudio: {fileID: 8300000, guid: 5cd921b91deac4f47b05c451951f7a53, type: 3}
+  enemyAttacksAudio: {fileID: 8300000, guid: 4fb45f9472f5e554c82a5a9c7ba4c739, type: 3}
 --- !u!4 &802939242
 Transform:
   m_ObjectHideFlags: 0

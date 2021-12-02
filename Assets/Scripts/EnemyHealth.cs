@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        EventManager.TriggerEvent<EnemyDamagedEvent, Vector3>(transform.position);
         health -= damage;
         enemyHealthBar.SetHealth(health);
     }

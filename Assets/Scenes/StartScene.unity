@@ -810,6 +810,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 540985643}
     - target: {fileID: 5236221021220341927, guid: 628f653a637ee46048fa01a5a71a4dd9, type: 3}
+      propertyPath: enemyScale
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236221021220341927, guid: 628f653a637ee46048fa01a5a71a4dd9, type: 3}
       propertyPath: numberOfEnemies
       value: 18
       objectReference: {fileID: 0}
