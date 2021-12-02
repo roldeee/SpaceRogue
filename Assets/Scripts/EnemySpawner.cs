@@ -26,7 +26,8 @@ public class EnemySpawner : MonoBehaviour
         // get win streak
         int winStreak = PersistedDataHelper.GetWinStreak();
         // write formula for number of enemies
-        numberOfEnemies = ((winStreak + 1) * enemyScale) + numRoomsCleared;
+        int enemyCalc = ((winStreak + 1) * enemyScale) + (numRoomsCleared / 2);
+        numberOfEnemies = Mathf.Min(enemyCalc, enemyScale * 8);
         roomClearChecker.setNumEnemies(numberOfEnemies);
         Debug.Log("Num enemies: " + numberOfEnemies.ToString());
         for (int i = 0; i < numberOfEnemies; i++)
