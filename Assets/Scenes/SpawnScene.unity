@@ -2468,6 +2468,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6664949730255389093, guid: 9b746f31a7fe444f28310080898ee8b3, type: 3}
+      propertyPath: m_text
+      value: 'You wake up from a cryo sleep with amnesia. You don''t know where you
+        are, but it seems to be a spaceship...and it''s infested with hostile aliens!
+        Defeat them all to make your escape!
+
+
+        Actions:
+
+        - Press
+        F to interact
+
+        - Mouse Left Click to shoot
+
+        - Mouse Position
+        to move the camera angle
+
+        - WASD for movement'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1706407282555003701, guid: 9b746f31a7fe444f28310080898ee8b3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9b746f31a7fe444f28310080898ee8b3, type: 3}
@@ -3756,16 +3775,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1720
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -1030
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061526945705776395, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 1030
       objectReference: {fileID: 0}
     - target: {fileID: 1061526947186319867, guid: cff20dfd9d41c734fb436d4dd67f00fa, type: 3}
       propertyPath: m_Name
