@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 3591163133577646748}
   - component: {fileID: 5777270380019600308}
   - component: {fileID: 8713366846103480404}
+  - component: {fileID: 8453498146238342711}
   m_Layer: 7
   m_Name: Mr Grey
   m_TagString: Enemy
@@ -990,6 +991,18 @@ MonoBehaviour:
   chaseRadius: 10
   attackRadius: 2.5
   waypointPositions: []
+--- !u!114 &8453498146238342711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2682904578454731712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a569568cd58e0404bb0119b256c6f247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2682904578454731714
 GameObject:
   m_ObjectHideFlags: 0
