@@ -22,6 +22,14 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.tag.Equals("Projectile"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         Destroy(gameObject, 5f); // Destroy projectile after 5 seconds

@@ -13,10 +13,13 @@ public class EnemyAI : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public float chaseRadius = 5f;
     public float attackRadius = 2.5f;
+    public float speed = 3f;
     RoomClearChecker roomClearChecker;
     EventSystem eventSystem;
     EnemyHealth enemyHealth;
-    
+
+    private Collider[] ragdollColliders;
+    private Rigidbody rb;
     private bool isDead = false;
 
     private enum AIState
@@ -24,7 +27,8 @@ public class EnemyAI : MonoBehaviour
         Roaming,
         Attacking,
         Chasing,
-        Idle
+        Idle,
+        Dead
     };
     private int epsilon = 1;
     private int currWaypoint = -1;
@@ -36,6 +40,9 @@ public class EnemyAI : MonoBehaviour
     {
         enemyHealth = GetComponent<EnemyHealth>();
         roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
+        rb = GetComponent<Rigidbody>();
+        ragdollColliders = GetComponentsInChildren<Collider>();
+        EnableRagdoll(false);
         if (waypoints.Length > 0)
         {
             waypointPositions = new Vector3[waypoints.Length];
@@ -60,6 +67,8 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+            aiState = AIState.Dead;
         float distanceToPlayer = Vector3.Distance(transform.position,
             player.transform.position);
         animator.SetBool("Attacking", false);
@@ -111,6 +120,10 @@ public class EnemyAI : MonoBehaviour
                     agent.isStopped = true;
                 }
             break;
+            case AIState.Dead:
+                agent.enabled = false;
+                animator.SetBool("Attacking", false);
+            break;
         }
     }
 
@@ -140,7 +153,17 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int damage)
+    /*    private void OnTriggerEnter(Collider other)
+        {
+            if (isDead)
+                return;
+            if (other.tag.Equals("Projectile"))
+            {
+                TakeDamage(other.GetComponent<Projectile>().damage);
+            }
+        }*/
+
+    public void TakeDamage(int damage)
     {
         enemyHealth.TakeDamage(damage);
         if (enemyHealth.health <= 0 && !isDead)
@@ -151,15 +174,39 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void TakeExplosiveDamage(int damage, Vector3 explosionPosition)
     {
-        if (!isDead)
+        if (isDead)
+            return;
+        enemyHealth.TakeDamage(damage);
+        EnableRagdoll(true);
+        gameObject.layer = 9; // layer 9 = dead enemies
+        foreach (Collider c in ragdollColliders)
         {
-            Destroy(transform.root.gameObject); // delete the parent object.
+            if (c.GetComponent<Rigidbody>() != null) 
+            {
+                ragdollColliders[0].enabled = false;
+                ragdollColliders[1].enabled = false;
+                c.gameObject.layer = 9;
+                c.GetComponent<Rigidbody>().AddExplosionForce(1f, explosionPosition, 3f, 3f, ForceMode.Impulse);
+            }
+        }
+
+        if (enemyHealth.health <= 0 && !isDead)
+        {
+            Destroy(transform.root.gameObject, 5);
             roomClearChecker.RemoveEnemy();
-            //animator.SetTrigger("isDead"); # TODO: Enable when death animations are setup.
             isDead = true;
-        } 
+        }
+    }
+
+    private void EnableRagdoll(bool status)
+    {
+        for (int i = 2; i < ragdollColliders.Length; i++)
+        {
+            ragdollColliders[i].enabled = status;
+        }
+        animator.enabled = !status;
     }
 }
 

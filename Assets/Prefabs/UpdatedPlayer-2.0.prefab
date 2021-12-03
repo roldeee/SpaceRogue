@@ -353,10 +353,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0
+  m_Height: 1.7
   m_Radius: 0.3534614
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0.1
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0.008843541, y: 0.8730711, z: -0.07292998}
@@ -407,6 +407,7 @@ MonoBehaviour:
   dashDelay: 0.07
   velocity: 1
   dashCooldown: 0.5
+  pushPower: 5
   characterController: {fileID: 0}
   animationSmoothTime: 0.1
   forwardDashParticleSystem: {fileID: 128323109650516448}
@@ -471,6 +472,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   healthTick: {fileID: 21300000, guid: 74e9effb120ff0f4c9d5515406174120, type: 3}
+  autoResHealAmount: 3
 --- !u!114 &80105091641027596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20723,7 +20725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 128323109828588452}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UpdatedPlayer-2.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
