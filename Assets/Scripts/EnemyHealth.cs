@@ -15,10 +15,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
+/*        if (health <= 0)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     public void SetHealth(int health)
