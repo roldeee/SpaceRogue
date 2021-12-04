@@ -562,12 +562,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13fc313259264999b297a8fe6f03743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 750876215}
   waypoints: []
   player: {fileID: 903859917}
   agent: {fileID: 750876214}
   chaseRadius: 30
   attackRadius: 2.5
+  speed: 3
   waypointPositions: []
 --- !u!195 &750876214
 NavMeshAgent:
