@@ -12,8 +12,16 @@ Known problem areas:
 -
 
 Manifest:
-- Harold Sandoval
-- Christopher Luafau
-- Richard Lee
-- Junwei Li
-- Ziyin Zhang
+Harold Sandoval:
+
+Christopher Luafau
+- Scripts:
+CreditsHandler, ExplosiveBarrel, ExplosiveBarrelSpawner, PlayerController, PlayerData, PlayerDataManager, PlayerWeapon, Projectile, RewardObtainer, RewardsHandler, RoomClearChecker, CameraController, RotateWithMouse
+- Assets:
+Projectiles, player weapon, rooms, player and animation, player dashing effects, rewards, boss and animation, health HUD canvas.
+
+Richard Lee:
+
+Junwei Li:
+
+Ziyin Zhang:
