@@ -1175,6 +1175,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6309771834425627565, guid: 8321cade4a2434b47b0c131e768e6058, type: 3}
+      propertyPath: m_Name
+      value: CreditsText
+      objectReference: {fileID: 0}
     - target: {fileID: 6671360311146048784, guid: 8321cade4a2434b47b0c131e768e6058, type: 3}
       propertyPath: m_Name
       value: Credits Menu
