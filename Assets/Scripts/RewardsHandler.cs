@@ -10,6 +10,7 @@ public class RewardsHandler : MonoBehaviour
 
     public GameObject[] previewRewardWaypoints;
     public GameObject currentRewardWaypoint;
+    public GameObject currentShopWaypoint;
 
     private PlayerDataManager playerDataManager;
 
@@ -60,6 +61,12 @@ public class RewardsHandler : MonoBehaviour
                     }
                 } while (rewardChosen == false);
             }
+        }
+
+        if (currentShopWaypoint != null)
+        {
+            GameObject shopprefab = Resources.Load<GameObject>("Prefab/Shop");
+            Instantiate(shopprefab, currentShopWaypoint.transform.position, currentShopWaypoint.transform.rotation);
         }
     }
 

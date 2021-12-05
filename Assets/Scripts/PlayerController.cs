@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canOpenDoor = false;
     [SerializeField] private bool inInteractRange = false;
     private string interactingDoor;
+    private GameObject shopGameObj;
 
     //private int count;
     //public TextMeshProUGUI countText;
@@ -177,6 +178,10 @@ public class PlayerController : MonoBehaviour
 
             SceneManager.LoadScene(nextScene);
         }
+        if (ShopCanOpen() && Input.GetKeyDown(KeyCode.F))
+        {
+            GameObject.FindObjectOfType<ShopPanel>().OnShow();
+        }
         Rotation();
     }
 
@@ -210,11 +215,21 @@ public class PlayerController : MonoBehaviour
         return canOpenDoor;
     }
 
+    private bool ShopCanOpen()
+    {   
+        if (shopGameObj != null && Vector3.Distance(shopGameObj.transform.position,transform.position) <= 1f)
+        {
+            return true;
+        }
+        return false;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "NextReward")
         {
+            GameObject.Find("DoorPromptPanel").GetComponent<CanvasGroup>().alpha = 1;
             nextReward = other.gameObject;
             Debug.Log("NextReward: " + nextReward.name);
         }
@@ -225,7 +240,13 @@ public class PlayerController : MonoBehaviour
             interactingDoor = other.name;
             if (DoorCanOpen()) {
                 EventManager.TriggerEvent<DoorOpensEvent, Vector3>(transform.position);
+                GameObject.Find("DoorPromptPanel").GetComponent<CanvasGroup>().alpha = 1;
             }
+        }
+        if (other.tag == "Shop")
+        {
+            shopGameObj = other.gameObject;
+            GameObject.Find("DoorPromptPanel").GetComponent<CanvasGroup>().alpha = 1;
         }
         if (other.tag == "Enemy" && !animator.GetBool("isDashing"))
         {
@@ -253,6 +274,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        shopGameObj = null;
+        GameObject.Find("DoorPromptPanel").GetComponent<CanvasGroup>().alpha = 0;
         if (other.tag == "NextReward")
         {
             nextReward = null;

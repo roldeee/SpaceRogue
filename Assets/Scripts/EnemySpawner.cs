@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class EnemySpawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject enemyPrefab;
+    public List<GameObject> enemyPrefabs;
     public GameObject player;
     public int numberOfEnemies = 1;
     public int enemyScale = 1;
@@ -26,13 +26,14 @@ public class EnemySpawner : MonoBehaviour
         // get win streak
         int winStreak = PersistedDataHelper.GetWinStreak();
         // write formula for number of enemies
-        int enemyCalc = ((winStreak + 1) * enemyScale) + (numRoomsCleared / 2);
+        int enemyCalc = ((winStreak * 2 + 1) * enemyScale) + (int)(numRoomsCleared * 2 * 1.5f);
+        //Debug.Log("连胜：" + winStreak + "/当前闯关房间：" + numRoomsCleared + "/当前怪物血量：" + enemyCalc);
         numberOfEnemies = Mathf.Min(enemyCalc, enemyScale * 8);
         roomClearChecker.setNumEnemies(numberOfEnemies);
         Debug.Log("Num enemies: " + numberOfEnemies.ToString());
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            GameObject newEnemy = Instantiate(enemyPrefab, GetRandomLocationOnNavMesh(spawnRadius), Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], GetRandomLocationOnNavMesh(spawnRadius), Quaternion.identity);
             EnemyAI ai = newEnemy.GetComponentInChildren<EnemyAI>();
             ai.player = player;
 

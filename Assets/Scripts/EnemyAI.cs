@@ -18,6 +18,10 @@ public class EnemyAI : MonoBehaviour
     EventSystem eventSystem;
     EnemyHealth enemyHealth;
 
+    [SerializeField]
+    private int score;
+    [SerializeField]
+    private int minGold, maxGold;
     private Collider[] ragdollColliders;
     private Rigidbody rb;
     private bool isDead = false;
@@ -38,6 +42,15 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (score == 0)
+        {
+            score = 5;
+        }
+        if (maxGold == 0)
+        {
+            maxGold = 5;
+        }
+
         enemyHealth = GetComponent<EnemyHealth>();
         roomClearChecker = EventSystem.current.GetComponent<RoomClearChecker>();
         rb = GetComponent<Rigidbody>();
@@ -168,6 +181,13 @@ public class EnemyAI : MonoBehaviour
         enemyHealth.TakeDamage(damage);
         if (enemyHealth.health <= 0 && !isDead)
         {
+            PlayerDataManager.Instance.playerData.score += score;
+            int gold = UnityEngine.Random.Range(minGold, maxGold);
+            if (gold != 0)
+            {
+                PlayerDataManager.Instance.playerData.gold += gold;
+                PlayerDataPanel.AddGold(gold);
+            }
             Destroy(transform.root.gameObject);
             roomClearChecker.RemoveEnemy();
             isDead = true;

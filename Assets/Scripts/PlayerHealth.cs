@@ -26,13 +26,16 @@ public class PlayerHealth : MonoBehaviour
         // Enable all health ticks
         for (int i = 0; i < healthTicks.Length; i++)
         {
-            if (i < currentHealthTicks)
+            if(healthTicks[i] != null)
             {
-                healthTicks[i].enabled = true;
-            }
-            else
-            {
-                healthTicks[i].enabled = false;
+                if (i < currentHealthTicks)
+                {
+                    healthTicks[i].enabled = true;
+                }
+                else
+                {
+                    healthTicks[i].enabled = false;
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerData
 {
     public int score = 0;
+    public int gold = 0;
     public List<RewardsHandler.Reward> currentRewards = new List<RewardsHandler.Reward>();
     public int currentHealth = 10;
     public int maxHealth = 10;

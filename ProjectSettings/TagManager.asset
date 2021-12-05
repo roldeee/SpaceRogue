@@ -12,6 +12,7 @@ TagManager:
   - PlayerWeapon
   - BossEnemy
   - Projectile
+  - Shop
   layers:
   - Default
   - TransparentFX

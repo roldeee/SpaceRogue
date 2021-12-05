@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class PlayerDataManager
 {
-    private static PlayerDataManager instance = null;
+    private static PlayerDataManager instance;
     private static readonly object padlock = new object();
-
-    public PlayerData playerData;
-    private PlayerDataManager()
+    public static PlayerDataManager Instance
     {
-        playerData = new PlayerData();
-    }
-
-    public static PlayerDataManager Instance { 
         get
         {
             lock (padlock)
@@ -25,5 +19,11 @@ public class PlayerDataManager
                 return instance;
             }
         }
+    }
+
+    public PlayerData playerData;
+    private PlayerDataManager()
+    {
+        playerData = new PlayerData();
     }
 }
