@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class RewardsHandler : MonoBehaviour
 {
@@ -51,7 +50,7 @@ public class RewardsHandler : MonoBehaviour
                 do
                 {
                     // Choose random next reward that hasn't been used and create it.
-                    string rewardStr = GetRewardStr(possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)]);
+                    string rewardStr = GetRewardStr(possibleRewards[Random.Range(0, possibleRewards.Count)]);
                     if (!rewardsUsed.Contains(rewardStr))
                     {
                         rewardsUsed.Add(rewardStr);
@@ -65,8 +64,12 @@ public class RewardsHandler : MonoBehaviour
 
         if (currentShopWaypoint != null)
         {
-            GameObject shopprefab = Resources.Load<GameObject>("Prefab/Shop");
-            Instantiate(shopprefab, currentShopWaypoint.transform.position, currentShopWaypoint.transform.rotation);
+            // 20% chance of the shop being present
+            if (Random.Range(0, 10) < 2)
+            {
+                GameObject shopprefab = Resources.Load<GameObject>("Prefab/Shop");
+                Instantiate(shopprefab, currentShopWaypoint.transform.position, currentShopWaypoint.transform.rotation);
+            }
         }
     }
 

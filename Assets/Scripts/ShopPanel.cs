@@ -60,16 +60,16 @@ public class ShopPanel : MonoBehaviour
         switch (obj.gameObject.name)
         {
             case "HPButton":
-                GameObject.FindObjectOfType<PlayerHealth>().Heal(1);
+                FindObjectOfType<PlayerHealth>().Heal(1);
                 break;
-            case "SINGLE_FIREButton":
-                GameObject.FindObjectOfType<PlayerWeapon>().SetFireType(PlayerWeapon.FIRE_TYPE.SINGLE_FIRE);
+            case "AUTO_RESButton":
+                PlayerDataManager.Instance.playerData.hasAutoRes = true;
                 break;
             case "DOUBLE_FIREButton":
-                GameObject.FindObjectOfType<PlayerWeapon>().SetFireType(PlayerWeapon.FIRE_TYPE.DOUBLE_FIRE);
+                FindObjectOfType<PlayerWeapon>().SetFireType(PlayerWeapon.FIRE_TYPE.DOUBLE_FIRE);
                 break;
             case "SPREAD_FIREButton":
-                GameObject.FindObjectOfType<PlayerWeapon>().SetFireType(PlayerWeapon.FIRE_TYPE.SPREAD_FIRE);
+                FindObjectOfType<PlayerWeapon>().SetFireType(PlayerWeapon.FIRE_TYPE.SPREAD_FIRE);
                 break;
         }
     }

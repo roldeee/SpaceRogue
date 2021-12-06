@@ -44,11 +44,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (score == 0)
         {
-            score = 5;
+            score = 1;
         }
         if (maxGold == 0)
         {
-            maxGold = 5;
+            maxGold = 1;
         }
 
         enemyHealth = GetComponent<EnemyHealth>();
@@ -182,7 +182,7 @@ public class EnemyAI : MonoBehaviour
         if (enemyHealth.health <= 0 && !isDead)
         {
             PlayerDataManager.Instance.playerData.score += score;
-            int gold = UnityEngine.Random.Range(minGold, maxGold);
+            int gold = UnityEngine.Random.Range(minGold, maxGold + 1);
             if (gold != 0)
             {
                 PlayerDataManager.Instance.playerData.gold += gold;
