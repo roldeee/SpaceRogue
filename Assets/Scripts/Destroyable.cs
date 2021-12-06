@@ -15,7 +15,7 @@ public class Destroyable : MonoBehaviour
         if (projectile != null)
         {
             PlayerDataManager.Instance.playerData.score += score;
-            int gold = Random.Range(minGold, maxGold);
+            int gold = Random.Range(minGold, maxGold + 1);
             if (gold != 0)
             {
                 PlayerDataManager.Instance.playerData.gold += gold;

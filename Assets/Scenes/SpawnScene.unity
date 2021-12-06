@@ -159,9 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!1001 &14378294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,9 +406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!1 &83121795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 6a3b4ced541293e4abee12bf1574f3c2, type: 3}
@@ -445,9 +445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 0
 --- !u!4 &90587180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -682,9 +682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 0
 --- !u!4 &201848146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -1723,9 +1723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &539495946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -1883,9 +1883,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &593287097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -2386,9 +2386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 0
 --- !u!4 &760228959 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -2430,9 +2430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 0
 --- !u!4 &773052749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -2474,9 +2474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &838264781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -3159,7 +3159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 1
   minGold: 0
   maxGold: 0
 --- !u!4 &1072268838
@@ -3467,9 +3467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 0
 --- !u!1 &1201442573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 6a3b4ced541293e4abee12bf1574f3c2, type: 3}
@@ -3506,9 +3506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &1201569680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -3711,9 +3711,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &1313608190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -3755,9 +3755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!1 &1347167783 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 6a3b4ced541293e4abee12bf1574f3c2, type: 3}
@@ -3794,9 +3794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 0
 --- !u!1001 &1372435522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3967,9 +3967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &1378893888
 Transform:
   m_ObjectHideFlags: 0
@@ -4187,9 +4187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!1001 &1613851840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4382,9 +4382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &1745593469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -4824,9 +4824,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!1 &1986417899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 6a3b4ced541293e4abee12bf1574f3c2, type: 3}
@@ -4863,9 +4863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!4 &1999616873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6290937845770275941, guid: 6a92aa58f4fa41f40b07917b8a2b0958, type: 3}
@@ -5167,9 +5167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90508292ce1a4a1299396a8e9b05289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 1
   minGold: 0
-  maxGold: 3
+  maxGold: 1
 --- !u!1001 &7223414799777058
 PrefabInstance:
   m_ObjectHideFlags: 0
