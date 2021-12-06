@@ -21,7 +21,11 @@ CreditsHandler, ExplosiveBarrel, ExplosiveBarrelSpawner, PlayerController, Playe
 Projectiles, player weapon, rooms, player and animation, player dashing effects, rewards, boss and animation, health HUD canvas.
 
 Richard Lee:
+- Scripts: MapController (Procedural Level Generation), Levels, LevelTree, WinStreak, EntryMenu, GameOverMenu, Destroyable, EnemyHealth
+- Assets: Basic Room, Spawn Room, Room Clear Count UI, Enemy Health Bar, Game Over Menu, EntryMenu, Dynamic Doors & Waypoints in Each Scene
 
 Junwei Li:
+- Scripts: ShopPanel, PlayerDataPanel, PlayerController, CameraController, EnemyAI, Player
+- Assets: Alien, Cocoons, Rooms (Multiple), StartScene, Scene2, Scene3, Scene4
 
 Ziyin Zhang:
