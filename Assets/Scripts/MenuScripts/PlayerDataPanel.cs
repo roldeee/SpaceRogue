@@ -1,52 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class PlayerDataPanel : MonoBehaviour
 {
-    private Text scoreText;
-    private Text goldText;
-
-    private static Transform addGoldparent;
+    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI goldText;
+    private static GameObject addGoldParent;
     private static GameObject addGoldText;
 
     private void Start()
     {
-        addGoldparent = transform.GetChild(2).transform;
-        addGoldText = addGoldparent.GetChild(0).gameObject;
-
-        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        goldText = GameObject.Find("GoldText").GetComponent<Text>();
+        addGoldParent = GameObject.Find("AddGold");
+        addGoldText = GameObject.Find("AddGoldText").gameObject;
+        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        goldText = GameObject.Find("GoldText").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
-        scoreText.text = PlayerDataManager.Instance.playerData.score + "";
-        goldText.text = PlayerDataManager.Instance.playerData.gold + "";
+        scoreText.text = "Score: " + PlayerDataManager.Instance.playerData.score;
+        goldText.text = "Gold: " + PlayerDataManager.Instance.playerData.gold;
     }
 
     public static void AddGold(int addCount)
     {
-        Text text = GameObject.Instantiate(addGoldText, addGoldparent).GetComponent<Text>();
+        TextMeshProUGUI text = Instantiate(addGoldText, addGoldParent.transform).GetComponent<TextMeshProUGUI>();
 
-        if (addGoldparent.childCount > 4)
+        if (addGoldParent.transform.childCount > 4)
         {
-            int desCount = addGoldparent.childCount - 4;
+            int desCount = addGoldParent.transform.childCount - 4;
             for (int i = 1; i < desCount + 1; i++)
             {
-                addGoldparent.GetChild(i).DOKill();
-                Destroy(addGoldparent.GetChild(i).gameObject);
+                addGoldParent.transform.GetChild(i).DOKill();
+                Destroy(addGoldParent.transform.GetChild(i).gameObject);
             }
         }
 
-        for (int i = 0; i < addGoldparent.childCount; i++)
+        for (int i = 0; i < addGoldParent.transform.childCount; i++)
         {
-            addGoldparent.GetChild(i).GetComponent<RectTransform>().localPosition = new Vector3(150, (i-1) * -60, 0);
-            if (addGoldparent.GetChild(i).GetComponent<RectTransform>().localPosition.y > -60)
+            addGoldParent.transform.GetChild(i).GetComponent<RectTransform>().localPosition = new Vector3(150, (i-1) * -60, 0);
+            if (addGoldParent.transform.GetChild(i).GetComponent<RectTransform>().localPosition.y > -60)
             {
-                addGoldparent.GetChild(i).GetComponent<RectTransform>().localPosition = new Vector3(150, -60, 0);
+                addGoldParent.transform.GetChild(i).GetComponent<RectTransform>().localPosition = new Vector3(150, -60, 0);
             }
         }
 
