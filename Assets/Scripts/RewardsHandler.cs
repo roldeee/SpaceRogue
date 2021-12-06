@@ -64,8 +64,8 @@ public class RewardsHandler : MonoBehaviour
 
         if (currentShopWaypoint != null)
         {
-            // 10% chance of the shop being present
-            if (Random.Range(0, 10) < 1)
+            // 20% chance of the shop being present
+            if (Random.Range(0, 10) < 2)
             {
                 GameObject shopprefab = Resources.Load<GameObject>("Prefab/Shop");
                 Instantiate(shopprefab, currentShopWaypoint.transform.position, currentShopWaypoint.transform.rotation);
