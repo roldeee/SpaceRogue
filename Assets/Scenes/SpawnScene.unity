@@ -2183,7 +2183,7 @@ PrefabInstance:
       objectReference: {fileID: 1144163043}
     - target: {fileID: 2427089904419144569, guid: e595b783d218e0f47b7182531f2313d6, type: 3}
       propertyPath: previewRewardWaypoints.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2427089904419144569, guid: e595b783d218e0f47b7182531f2313d6, type: 3}
       propertyPath: previewRewardWaypoints.Array.data[0]
