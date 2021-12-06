@@ -17,6 +17,9 @@ public class CameraController : MonoBehaviour
     {
         offset = transform.position - player.transform.position;
         finalOffset = offset;
+
+        Rotate();
+        Move();
     }
 
     // Update is called once per frame
@@ -24,9 +27,14 @@ public class CameraController : MonoBehaviour
     {
         if (Time.timeScale > 0f) {
             Rotate();
-            transform.position = Vector3.Lerp(transform.position, (player.transform.position + finalOffset), .5f);
-            transform.LookAt(player.transform.position);
+            Move();
         }
+    }
+
+    void Move()
+    {
+        transform.position = Vector3.Lerp(transform.position, (player.transform.position + finalOffset), .5f);
+        transform.LookAt(player.transform.position);
     }
 
     void Rotate()
