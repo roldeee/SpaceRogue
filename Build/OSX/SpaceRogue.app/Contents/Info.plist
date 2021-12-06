@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
-    <string>GreatestTrashPandas-TeamProject</string>
+    <string>Space Rogue</string>
     <key>CFBundleGetInfoString</key>
     <string>Unity Player version 2020.3.16f1 (049d6eca3c44). (c) 2021 Unity Technologies ApS. All rights reserved.</string>
     <key>CFBundleIconFile</key>
@@ -15,7 +15,7 @@
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>GreatestTrashPandas-TeamProject</string>
+    <string>Space Rogue</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
